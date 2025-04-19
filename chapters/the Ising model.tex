@@ -1,0 +1,47 @@
+\chapter{the Ising model}
+\begin{itemize}
+	\item Ising model 由 $D$ 维空间中的 $N$ 个格点 (lattice site) 组成, 每个格点可以处于两种态,
+	\begin{equation}
+		s_i = \pm 1.
+	\end{equation}
+	
+	\item 一组 $\{s_i\}$ 的能量为
+	\begin{equation}
+		H[s_i] = - B \sum_i s_i - J \sum_{\braket{i j}} s_i s_j,
+	\end{equation}
+	其中 $\braket{i j}$ 表示格点中所有 "nearest neighbour" pairs, $\braket{i j}$ 的数量依赖于 $D$ 和 the type of lattice.
+	\begin{itemize}
+		\item 如果 $B > 0$, 格点倾向于 $s_i = + 1$ 的态.
+		
+		\item 如果 $J > 0$, 格点倾向于 $\uparrow \uparrow$ 或 $\downarrow \downarrow$, 这种系统称为 a ferromagnet, 反之则称为 an anti-ferromagnet.
+	\end{itemize}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item in canonical ensemble, 状态 $\{s_i\}$ 的概率为
+	\begin{equation}
+		p[s_i] = \frac{1}{Z} e^{- \beta H[s_i]},
+	\end{equation}
+	其中 $Z(\beta, B, J)$ 是 partition function.
+	
+	\item 定义 equilibrium magnetization 为
+	\begin{equation}
+		m = \frac{1}{N} \braket{\sum_i s_i} \in [- 1, + 1],
+	\end{equation}
+	利用 partition function 可知,
+	\begin{equation}
+		m = \frac{1}{N \beta} \frac{\partial \ln Z}{\partial B}.
+	\end{equation}
+\end{itemize}
+
+\section{the effective free energy}
+\begin{itemize}
+	\item 用以下办法定义 $F(m)$,
+	\begin{equation}
+		Z = \sum_m \sum_{m | \{s_i\}} e^{- \beta H[s_i]} := \sum_m e^{- \beta F(m)} \overset{N \ll 1}{\approx} \frac{N}{2} \int dm \, e^{- \beta F(m)},
+	\end{equation}
+	其中 $\{s_i\} | m$ 表示所有满足 $\frac{1}{N} \sum_i s_i = m$ 的态 $\{s_i\}$.
+	\begin{itemize}
+		\item 系数 $\frac{N}{2}$ 对物理没有影响, 可以忽略.
+	\end{itemize}
+\end{itemize}
