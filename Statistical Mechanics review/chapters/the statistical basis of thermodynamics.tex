@@ -1,0 +1,156 @@
+\chapter{the statistical basis of thermodynamics}
+\section{statistics and thermodynamics}
+\begin{itemize}
+	\item macrostates, microstates, the postulate of "equal \textit{a priori} probabilities".
+	
+	\item 通过考虑 two physical systems, $A_1, A_2$, brought into thermal contact, 达到平衡态时 $\Omega_1 \Omega_2$ 处于最大值, 得到
+	\begin{equation}
+		\begin{dcases}
+			S = k_B \ln \Omega(E, V, N) \\
+			T dS = dU + P dV - \mu dN
+		\end{dcases},
+	\end{equation}
+	其中 $U = \braket{E}$.
+	
+	\item 对于 homogeneous systems, 有
+	\begin{equation}
+		S dT = V dP - N d\mu \iff T S = U + P V - \mu N.
+	\end{equation}
+	
+	\begin{tcolorbox}[title=homogeneity relations:]
+		对于 homogeneous systems, 有
+		\begin{equation}
+			S(\alpha U, \alpha V, \alpha N) = \alpha S(U, V, N) \Longrightarrow T S = \cdots
+		\end{equation}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		a function $f(x_1, \cdots, x_n)$ satisfying
+		\begin{equation}
+			f(\alpha x_1, \cdots, \alpha x_n) = \alpha^k f(x_1, \cdots, x_n)
+		\end{equation}
+		is called a homogeneous function of degree $k$.
+		
+		consider
+		\begin{equation}
+			\frac{\partial f(\alpha \vec{x})}{\partial \alpha} = \sum_i x_i \frac{\partial f}{\partial x_i} \Big|_{\alpha \vec{x}} = \frac{\partial \alpha^k f(\vec{x})}{\partial \alpha} = k \alpha^{k - 1} f(\vec{x}),
+		\end{equation}
+		and by setting $\alpha = 1$, we have Euler's homogeneous function theorem,
+		\begin{equation}
+			k f(\vec{x}) = \sum_i x_i \frac{\partial f}{\partial x_i} \Big|_{\vec{x}}.
+		\end{equation}
+	\end{tcolorbox}
+	
+	\item 可以定义各种 free energies 如下:
+	
+	\begin{center}
+		\begin{tabularx}{\linewidth}{XXXl}
+			\toprule 
+			names & expressions & for homogeneous sys. & differentials \\
+			\midrule 
+			internal energy & $U$ & $U = T S - P V + \mu N$ & $dU = T dS - P dV + \mu dN$ \\
+			Helmholtz f.e. & $F = U - T S$ & N/A & $dF = - S dT - P dV + \mu dN$ \\
+			enthalpy & $H = U + P V$ & N/A & $dH = T dS + V dP + \mu dN$ \\
+			Gibbs f.e. & $G = U - T S + P V$ & $G = \mu N$ & $dG = - S dT + V dP + \mu dN$ \\
+			grand potential & $\Phi_\text{G} = U - T S - P V$ & $\Phi_\text{G} = - P V$ & $d\Phi_\text{G} = - S dT - P dV - N d\mu$ \\
+			\bottomrule
+		\end{tabularx}
+	\end{center}
+	
+	\item the specific heats are
+	\begin{equation}
+		C_V \equiv T \Big( \frac{\partial S}{\partial T} \Big)_{V, N} = \Big( \frac{\partial U}{\partial T} \Big)_{V, N}, \quad C_P \equiv T \Big( \frac{\partial S}{\partial T} \Big)_{P, N} = \Big( \frac{\partial H}{\partial T} \Big)_{P, N},
+	\end{equation}
+	并存在关系
+	\begin{equation}
+		\begin{dcases}
+			C_V - C_P = \Big( P + \Big( \frac{\partial U}{\partial V} \Big)_{T, N} \Big) \Big( \frac{\partial V}{\partial T} \Big)_{P, N}  = T V \frac{\alpha^2}{\kappa_T} \\
+			\frac{C_P}{C_V} = \frac{\kappa_T}{\kappa_S}
+		\end{dcases},
+	\end{equation}
+	其中
+	\begin{equation}
+		\begin{dcases}
+			\kappa_T = - \frac{1}{V} \Big( \frac{\partial V}{\partial P} \Big)_{T, N} \\
+			\kappa_S = - \frac{1}{V} \Big( \frac{\partial V}{\partial P} \Big)_{S, N} \\
+			\alpha = \frac{1}{V} \Big( \frac{\partial V}{\partial T} \Big)_{P, N}
+		\end{dcases}.
+	\end{equation}
+\end{itemize}
+
+\section{classical ideal gas}
+\begin{itemize}
+	\item consider a classical (粒子波包不重叠) system composed of noninteracting particles.
+	\begin{itemize}
+		\item 这两个条件导致每个粒子的分布不受其它粒子的影响, 所以
+		\begin{equation}
+			\Omega(E, V, N) = f(E, N) V^N \Longrightarrow \Big( \frac{\partial \ln \Omega}{\partial V} \Big)_{E, N} = \frac{N}{V},
+		\end{equation}
+		得到 equation of state,
+		\begin{equation}
+			\frac{P}{T} = \Big( \frac{\partial S}{\partial V} \Big)_{E, N} = k_B \frac{N}{V}.
+		\end{equation}
+	\end{itemize}
+	
+	\item 考虑方形势阱 ($L^3 = V$) 中的能量本征值,
+	\begin{equation}
+		E = \sum_{i = 1}^{3 N} \epsilon_i, \quad \text{where} \quad \epsilon_i = \frac{h^2}{8 m L^2} n_i^2, n_i = 1, 2, \cdots,
+	\end{equation}
+	那么
+	\begin{equation}
+		\Omega(E, V, N) = \frac{1}{2^{3 N + 1}} \frac{3 N \pi^{\frac{3 N}{2}}}{(\frac{3 N}{2})!} \Big( \frac{8 m V^{2 / 3}}{h^2} \Big)^{\frac{3 N}{2}} E^{\frac{3 N}{2} - 1} \Delta E = \frac{\frac{3 N}{2}}{(\frac{3 N}{2})!} (2 \pi m E)^{\frac{3 N}{2}} \Big( \frac{V}{h^3} \Big)^N \frac{\Delta E}{E},
+	\end{equation}
+	因此 (忽略 $O(\ln N), O(\ln \frac{\Delta E}{E})$ 项)
+	\begin{equation} \label{1.2.5}
+		\ln \Omega \approx \frac{3 N}{2} + N \ln \Big( \frac{V}{h^3} \Big( \frac{4 \pi m E}{3 N} \Big)^{3 / 2} \Big).
+	\end{equation}
+	\begin{itemize}
+		\item 注意, 计算中认为每个粒子都是可区分的 (distinguishable).
+		
+		\item 这个结果与 homogeneous system 的性质矛盾.
+	\end{itemize}
+	
+	\begin{tcolorbox}[title=calculation:]
+		用到 $n$-sphere 的面积和体积公式,
+		\begin{equation}
+			V_n = \frac{\pi^{n / 2}}{(n / 2)!}, \quad S_{n - 1} = \frac{n \pi^{n / 2}}{(n / 2)!},
+		\end{equation}
+		其中
+		\begin{equation}
+			(z)! \equiv \Gamma(z + 1) = z \Gamma(z), \quad \Gamma(\frac{1}{2}) = \sqrt{\pi}.
+		\end{equation}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		Stirling's formula is
+		\begin{equation}
+			\ln N! \approx N \ln N - N.
+		\end{equation}
+	\end{tcolorbox}
+\end{itemize}
+
+\section{Gibbs paradox}
+\begin{itemize}
+	\item 我们已经注意到 \eqref{1.2.5} 与 homogeneous system 的性质矛盾.
+	
+	\item Gibbs 为解决这个问题修改了 number of microstates,
+	\begin{equation}
+		\Omega(E, V, N) \mapsto \frac{\Omega(E, V, N)}{N!},
+	\end{equation}
+	因此
+	\begin{equation}
+		S(E, V, N) = k_B \bigg( N \ln \bigg( \frac{V}{N} \Big( \frac{4 \pi m E}{3 h^2 N} \Big)^{3 / 2} \bigg) + \frac{5}{2} N \bigg).
+	\end{equation}
+	
+	\item 结论: ideal gas 中的粒子是 identical and indistinguishable.
+	\begin{itemize}
+		\item 系数 $\frac{1}{N!}$ 只有在所有粒子都处于不同状态时才正确, 这种条件称为 classical limit.
+	\end{itemize}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item 理想气体的化学势为
+	\begin{equation}
+		\mu = E \Big( \frac{5}{3 N} - \frac{2 S}{3 N^2 k_B} \Big) = k_B T \ln \Big( \frac{N}{V} \Big( \frac{h^2}{2 \pi m k_B T} \Big)^{3 / 2} \Big).
+	\end{equation}
+\end{itemize}
