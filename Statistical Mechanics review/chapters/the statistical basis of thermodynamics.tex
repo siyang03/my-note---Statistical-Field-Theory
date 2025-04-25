@@ -1,7 +1,9 @@
 \chapter{the statistical basis of thermodynamics}
 \section{statistics and thermodynamics}
 \begin{itemize}
-	\item macrostates, microstates, the postulate of "equal \textit{a priori} probabilities".
+	\item macrostates vs. microstates.
+	
+	\item the postulate of "equal \textit{a priori} probabilities": 对于一个孤立 (具有确定的 $E, V, N$) 的热平衡系统, 任何可能的 microstate 的概率相同.
 	
 	\item 通过考虑 two physical systems, $A_1, A_2$, brought into thermal contact, 达到平衡态时 $\Omega_1 \Omega_2$ 处于最大值, 得到
 	\begin{equation}
@@ -57,6 +59,10 @@
 		\end{tabularx}
 	\end{center}
 	
+	\begin{itemize}
+		\item $S$ 源于 microcanonical ensemble, $F$ 源于 canonical ensemble.
+	\end{itemize}
+	
 	\item the specific heats are
 	\begin{equation}
 		C_V \equiv T \Big( \frac{\partial S}{\partial T} \Big)_{V, N} = \Big( \frac{\partial U}{\partial T} \Big)_{V, N}, \quad C_P \equiv T \Big( \frac{\partial S}{\partial T} \Big)_{P, N} = \Big( \frac{\partial H}{\partial T} \Big)_{P, N},
@@ -78,7 +84,7 @@
 	\end{equation}
 \end{itemize}
 
-\section{classical ideal gas}
+\section{classical ideal gas} \label{1.2}
 \begin{itemize}
 	\item consider a classical (粒子波包不重叠) system composed of noninteracting particles.
 	\begin{itemize}
@@ -97,12 +103,13 @@
 		E = \sum_{i = 1}^{3 N} \epsilon_i, \quad \text{where} \quad \epsilon_i = \frac{h^2}{8 m L^2} n_i^2, n_i = 1, 2, \cdots,
 	\end{equation}
 	那么
-	\begin{equation}
-		\Omega(E, V, N) = \frac{1}{2^{3 N + 1}} \frac{3 N \pi^{\frac{3 N}{2}}}{(\frac{3 N}{2})!} \Big( \frac{8 m V^{2 / 3}}{h^2} \Big)^{\frac{3 N}{2}} E^{\frac{3 N}{2} - 1} \Delta E = \frac{\frac{3 N}{2}}{(\frac{3 N}{2})!} (2 \pi m E)^{\frac{3 N}{2}} \Big( \frac{V}{h^3} \Big)^N \frac{\Delta E}{E},
-	\end{equation}
+	\begin{align}
+		\Gamma(E - \Delta E, E,  V, N) \equiv \sum_{E - \Delta E}^E \Omega(E, V, N) &= \frac{1}{2^{3 N + 1}} \frac{3 N \pi^{\frac{3 N}{2}}}{(\frac{3 N}{2})!} \Big( \frac{8 m V^{2 / 3}}{h^2} \Big)^{\frac{3 N}{2}} E^{\frac{3 N}{2} - 1} \Delta E \notag \\
+		&= \frac{\frac{3 N}{2}}{(\frac{3 N}{2})!} (2 \pi m E)^{\frac{3 N}{2}} \Big( \frac{V}{h^3} \Big)^N \frac{\Delta E}{E},
+	\end{align}
 	因此 (忽略 $O(\ln N), O(\ln \frac{\Delta E}{E})$ 项)
 	\begin{equation} \label{1.2.5}
-		\ln \Omega \approx \frac{3 N}{2} + N \ln \Big( \frac{V}{h^3} \Big( \frac{4 \pi m E}{3 N} \Big)^{3 / 2} \Big).
+		\ln \Gamma \approx \frac{3 N}{2} + N \ln \Big( \frac{V}{h^3} \Big( \frac{4 \pi m E}{3 N} \Big)^{3 / 2} \Big).
 	\end{equation}
 	\begin{itemize}
 		\item 注意, 计算中认为每个粒子都是可区分的 (distinguishable).
@@ -137,7 +144,7 @@
 	\begin{equation}
 		\Omega(E, V, N) \mapsto \frac{\Omega(E, V, N)}{N!},
 	\end{equation}
-	因此
+	因此, 得到 Sackur-Tetrode equation,
 	\begin{equation}
 		S(E, V, N) = k_B \bigg( N \ln \bigg( \frac{V}{N} \Big( \frac{4 \pi m E}{3 h^2 N} \Big)^{3 / 2} \bigg) + \frac{5}{2} N \bigg).
 	\end{equation}
@@ -153,4 +160,6 @@
 	\begin{equation}
 		\mu = E \Big( \frac{5}{3 N} - \frac{2 S}{3 N^2 k_B} \Big) = k_B T \ln \Big( \frac{N}{V} \Big( \frac{h^2}{2 \pi m k_B T} \Big)^{3 / 2} \Big).
 	\end{equation}
+	
+	\item 理想气体的 partition function 见 subsection \ref{subsection 3.3.1}.
 \end{itemize}

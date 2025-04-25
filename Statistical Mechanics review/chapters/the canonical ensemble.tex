@@ -1,0 +1,448 @@
+\chapter{the canonical ensemble}
+\section{equilibrium between a system and a heat reservoir}
+\begin{itemize}
+	\item 系统 $A$ 与 heat reservoir $A_\text{HR}$ 存在热交换, 它们组成整体系统 $A_0$,
+	\begin{equation}
+		E_0 = E + E_\text{0}, \quad \Omega_0 = \sum_{E = 0}^{E_0} \Omega(E) \Omega_\text{HR}(E_0 - E).
+	\end{equation}
+	
+	\item 系统 $A$ 处于能量 $E$ 的\textbf{某个 microstate}的概率为
+	\begin{equation}
+		P = \frac{\Omega_\text{HR}(E_0 - E)}{\Omega_0},
+	\end{equation}
+	有近似
+	\begin{equation}
+		\Omega_\text{HR}(E_0 - E) \approx \Omega_\text{HR}(E_0) e^{- \beta E}.
+	\end{equation}
+	因此, canonical ensemble 的概率密度为
+	\begin{equation}
+		\rho(p, q) = \frac{e^{- \beta H(p, q)}}{Z_\text{C}}.
+	\end{equation}
+\end{itemize}
+
+\section{a system in the canonical ensemble}
+\begin{itemize}
+	\item 考虑一个由 $\mathcal{N}$ 个 identical subsystems 组成的系统 (heat reservoir), 总能量为 $\mathcal{E}$, 每个子系统 (其中一个就是系统 $A$) 可能处于 $N_\text{EL} + 1$ 个 energy level,
+	\begin{equation} \label{3.2.1}
+		\begin{dcases}
+			\sum_{i = 0}^{N_\text{EL}} n_i = \mathcal{N} \\
+			\sum_{i = 0}^{N_\text{EL}} n_i E_i = \mathcal{E}
+		\end{dcases},
+	\end{equation}
+	其中 $n_i$ 表示处于第 $i$ 个 energy level 的子系统数量.
+	
+	\item 系统处于 $\{n_i\}$ 的 number of microstate 为
+	\begin{equation}
+		W\{n_i\} = \frac{\mathcal{N}!}{n_0! \cdots n_{N_\text{EL}}!} \Longrightarrow \ln W\{n_i\} \approx \mathcal{N} \ln \mathcal{N} - \sum_{i = 0}^{N_\text{EL}} n_i \ln n_i.
+	\end{equation}
+	
+	\item 能级 $i$ 上的子系统数量的期望值为
+	\begin{equation} \label{3.2.3}
+		\braket{n_i} = \frac{\sum_{\{n_i\}} n_i W\{n_i\}}{\sum_{\{n_i\}} W\{n_i\}}.
+	\end{equation}
+\end{itemize}
+
+\subsection{the method of most probable values}
+\begin{itemize}
+	\item the most probable microstate $\{n_i\}$ 对应 $W\{n_i\}$ 取最大值, 此时
+	\begin{equation}
+		\frac{n_i}{\mathcal{N}} = \frac{e^{- \beta E_i}}{Z_\text{C}},
+	\end{equation}
+	其中 $\beta$ 满足
+	\begin{equation} \label{3.2.5}
+		\frac{\mathcal{E}}{\mathcal{N}} \equiv U = \frac{\sum_{i = 0}^{N_\text{EL}} E_i e^{- \beta E_i}}{Z_\text{C}}.
+	\end{equation}
+	\begin{itemize}
+		\item 此时
+		\begin{align}
+			\max(\ln W\{n_i\}) &= \beta \mathcal{E} + \mathcal{N} \ln Z_\text{C} \notag \\
+			&= \mathcal{N} \Big( 1 - \beta \frac{\partial}{\partial \beta} \Big) \ln Z_\text{C}.
+		\end{align}
+	\end{itemize}
+	
+	\begin{tcolorbox}[title=proof:]
+		用 the method of Lagrange multipliers 求 $\ln W\{n_i\}$ 的极大值点, 并满足约束条件 \eqref{3.2.1},
+		\begin{align}
+			& \frac{\partial \ln W\{n_i\}}{\partial n_i} - \alpha - \beta E_i = 0 \notag \\
+			\Longrightarrow & - (\ln n_i + 1) - \alpha - \beta E_i = 0 \notag \\
+			\Longrightarrow & n_i = e^{- 1 - \alpha} e^{- \beta E_i}.
+		\end{align}
+	\end{tcolorbox}
+	
+	\item 可见, 这个由 $\mathcal{N}$ 个 identical subsystems 组成的系统是一个 heat reservoir, 其中每个 subsystem 都处于 canonical ensemble.
+\end{itemize}
+
+\subsection{the method of mean values}
+\begin{itemize}
+	\item 本 subsection 我们直接计算 \eqref{3.2.3}.
+	
+	\item 定义新函数
+	\begin{equation}
+		\tilde{W}\{n_i\} := \frac{\mathcal{N}!}{n_0! \cdots n_{N_\text{EL}}!} \omega_0^{n_0} \cdots \omega_{N_\text{EL}}^{n_{N_\text{EL}}},
+	\end{equation}
+	和 (总系统的总微观态数)
+	\begin{equation}
+		\Gamma(\mathcal{N}, U) := \sum_{\{n_i\}} \tilde{W}\{n_i\}.
+	\end{equation}
+	\begin{itemize}
+		\item 那么
+		\begin{equation}
+			\braket{n_i} = \frac{\partial}{\partial \omega_i} \Big|_{\omega_{0, \cdots, N_\text{EL}} = 1} \ln \Gamma(\mathcal{N}, U).
+		\end{equation}
+	\end{itemize}
+	
+	\begin{tcolorbox}[title=notice:]
+		注意到
+		\begin{equation}
+			(\omega_1 + \cdots + \omega_M)^N = \sum_{\{n_i\}} \frac{N!}{n_1! \cdots n_M!} \omega_1^{n_1} \cdots \omega_M^{n_M},
+		\end{equation}
+		但是这里求和只需要满足 $\sum_{i = 1}^M n_i = N$, 与 $\Gamma(\mathcal{N}, U)$ 中的求和需要满足的两条约束条件 \eqref{3.2.1} 不同.
+	\end{tcolorbox}
+	
+	\item 引入 generating function $G(\mathcal{N}, z)$,
+	\begin{align}
+		G(\mathcal{N}, z) &:= \sum_{U = 0}^\infty \Gamma(\mathcal{N}, U) z^{\mathcal{N} U} \notag \\
+		&= \sum_{U = 0}^\infty \Big( \sum_{\{n_i\}} \frac{\mathcal{N}!}{n_0! \cdots n_{N_\text{EL}}!} (\omega_0 z^{E_0})^{n_0} \cdots (\omega_{N_\text{EL}} z^{E_{N_\text{EL}}})^{n_{N_\text{EL}}} \Big) \notag \\
+		&= \Big( \omega_0 z^{E_0} + \cdots \omega_{N_\text{EL}} z^{E_{N_\text{EL}}} \Big)^{\mathcal{N}},
+	\end{align}
+	令 $f(z) := \omega_0 z^{E_0} + \cdots \omega_{N_\text{EL}} z^{E_{N_\text{EL}}}$.
+	
+	\item 选取合适的单位使得 $E_i$ 都是整数, 且最低能级的能量 $E_0 = 0$.
+	
+	\item 此时, $\Gamma(\mathcal{N}, U)$ 就是 $G(\mathcal{N}, z)$ 对 $z$ 作 Taylor expansion 的系数, 因此
+	\begin{equation}
+		\Gamma(\mathcal{N}, U) = \frac{1}{2 \pi i} \oint \frac{G(\mathcal{N}, z)}{z^{\mathcal{N} U + 1}} dz \simeq \exp \Big( \mathcal{N} (\ln f(z_0) - U \ln z_0) \Big),
+	\end{equation}
+	其中 $z_0$ 满足
+	\begin{equation}
+		U \approx \frac{\sum_{i = 0}^{N_\text{EL}} \omega_i E_i z_0^{E_i}}{\sum_{i = 0}^{N_\text{EL}} \omega_i z_0^{E_i}}.
+	\end{equation}
+	
+	\begin{tcolorbox}[title=calculation:]
+		考虑 $f_1(z) = \frac{1}{z} + z, f_2(z) = \frac{1}{z} - z, f_3(z) = \frac{1}{z^2} + \frac{1}{z} + z + z^2, f_4(z) = \frac{1}{z^2} + \frac{1}{z} + z - z^2$, 分别如下图所示.
+		
+		\begin{figure}[H]
+			\centering
+			\begin{subfigure}{0.4\linewidth}
+				\centering
+				\includegraphics[scale=0.29]{figures/frac{1}{z} + z.pdf}
+				\caption{$f_1(z) = \frac{1}{z} + z$.}
+			\end{subfigure}
+			\hfill
+			\begin{subfigure}{0.4\linewidth}
+				\centering
+				\includegraphics[scale=0.29]{figures/frac{1}{z} - z.pdf}
+				\caption{$f_2(z) = \frac{1}{z} - z$.}
+			\end{subfigure}
+			\bigskip
+			\begin{subfigure}{0.4\linewidth}
+				\centering
+				\includegraphics[scale=0.29]{figures/frac{1}{z^2} + frac{1}{z} + z + z^2.pdf}
+				\caption{$f_3(z) = \frac{1}{z^2} + \frac{1}{z} + z + z^2$.}
+			\end{subfigure}
+			\hfill
+			\begin{subfigure}{0.4\linewidth}
+				\centering
+				\includegraphics[scale=0.29]{figures/frac{1}{z^2} + frac{1}{z} + z - z^2.pdf}
+				\caption{$f_4(z) = \frac{1}{z^2} + \frac{1}{z} + z - z^2$.}
+			\end{subfigure}
+			\caption{plots of $f_1(z), f_2(z), f_3(z), f_4(z)$.}
+		\end{figure}
+		
+		让 the contour of integration 正好穿过鞍点, 积分结果由 integrand 在鞍点附近的取值决定 \textcolor{red}{(?)}.
+		
+		因此, 我们首先需要确定鞍点的位置. 将 integrand 写作如下形式,
+		\begin{equation}
+			\frac{(f(z))^{\mathcal{N}}}{z^{\mathcal{N} U + 1}} = e^{\mathcal{N} g(z)} \Longrightarrow g(z) = \ln f(z) - \Big( U + \frac{1}{\mathcal{N}} \Big) \ln z,
+		\end{equation}
+		鞍点 $z_0$ 位于 (考虑到 $\mathcal{N} U \gg 1$)
+		\begin{equation}
+			\frac{dg(z = z_0)}{dz} = 0 \Longrightarrow U \approx U + \frac{1}{\mathcal{N}} = \frac{\sum_{i = 0}^{N_\text{EL}} \omega_i E_i z_0^{E_i}}{\sum_{i = 0}^{N_\text{EL}} \omega_i z_0^{E_i}},
+		\end{equation}
+		此时
+		\begin{equation}
+			g''(z_0) = \frac{f''(z_0)}{f(z_0)} - \frac{(U + \frac{1}{\mathcal{N}})^2 - (U + \frac{1}{\mathcal{N}})}{z_0^2},
+		\end{equation}
+		在 $g(z_0)$ 附近展开
+		\begin{equation}
+			g(z_0 + \Delta z) = g(z_0) + \frac{1}{2} g''(z_0) (\Delta z)^2 + O((\Delta z)^3),
+		\end{equation}
+		因此积分可以近似为
+		\begin{align}
+			\Gamma(\mathcal{N}, U) &\simeq \frac{1}{2 \pi i} \frac{(f(z_0))^{\mathcal{N}}}{z_0^{\mathcal{N} U + 1}} \int_{- \pi}^\pi \exp \Big( \frac{\mathcal{N}}{2} g''(z_0) (z_0 e^{i \theta} - z_0)^2 \Big) i z_0 e^{i \theta} d\theta \notag \\
+			&\simeq \frac{1}{2 \pi i} \frac{(f(z_0))^{\mathcal{N}}}{z_0^{\mathcal{N} U + 1}} \int_{- \infty}^\infty \exp \Big( - \frac{\mathcal{N}}{2} g''(z_0) (z_0 \theta)^2 \Big) i z_0 d\theta \notag \\
+			&= \frac{(f(z_0))^{\mathcal{N}}}{z_0^{\mathcal{N} U + 1}} \frac{1}{\sqrt{2 \pi \mathcal{N} g''(z_0)}},
+		\end{align}
+		或者
+		\begin{align}
+			\ln \Gamma(\mathcal{N}, U) &\simeq \mathcal{N} (\ln f(z_0) - U \ln z_0) - \Big( \ln z_0 + \frac{1}{2} \ln(2 \pi \mathcal{N} g''(z_0)) \Big) \notag \\
+			&\simeq \mathcal{N} (\ln f(z_0) - U \ln z_0)
+		\end{align}
+	\end{tcolorbox}
+	
+	\item 取 $\omega_{1, \cdots, N_\text{EL}} = 1$, 此时 $z_0 \in \mathbb{R}$, 令
+	\begin{equation}
+		z_0 = e^{- \beta},
+	\end{equation}
+	那么
+	\begin{equation}
+		\begin{dcases}
+			\ln \Gamma(\mathcal{N}, U) = \mathcal{N} (\ln Z_\text{C} + \beta U) \\
+			Z_\text{C} = \sum_{i = 0}^{N_\text{EL}} e^{- \beta E_i}
+		\end{dcases}.
+	\end{equation}
+	
+	\item 还可以得到
+	\begin{equation}
+		\frac{\braket{(\Delta n_i)^2}}{\braket{n_i}^2} = \frac{1}{\braket{n_i}} - \frac{1}{\mathcal{N}} \Big( 1 + \frac{(E_i - U)^2}{\braket{(E - U)^2}} \Big),
+	\end{equation}
+	其中
+	\begin{equation}
+		\braket{E^2} = \frac{\sum_{i = 1}^{N_\text{EL}} E_i^2 e^{- \beta E_i}}{\sum_{i = 1}^{N_\text{EL}} e^{- \beta E_i}}, \quad U \equiv \braket{E}.
+	\end{equation}
+	\begin{itemize}
+		\item 注意 \eqref{3.2.5}, $U$ 是 subsystem 的能量期望值, 不是总系统 (heat reservoir) 的.
+	\end{itemize}
+\end{itemize}
+
+\section{the partition function and the Helmholtz free energy and more}
+\begin{itemize}
+	\item the partition function is
+	\begin{equation}
+		Z_\text{C}(T, V, N) = \sum_{i = 0}^{N_\text{EL}} e^{- \beta E_i} = \int \frac{d^\nu p d^\nu q}{h^\nu} e^{- \beta H(p, q)},
+	\end{equation}
+	and the Helmholtz free energy is
+	\begin{equation}
+		F = U - T S = - k_B T \ln Z_\text{C}.
+	\end{equation}
+	\begin{itemize}
+		\item $Z_\text{C}(T, V, N)$ 对 $V, N$ 的依赖源于 $E_i(V, N)$.
+	\end{itemize}
+	
+	\item 另外, 求和可以转化为积分 (使用 \href{https://en.wikipedia.org/wiki/Laplace_transform#Inverse_Laplace_transform}{Laplace transformation})
+	\begin{equation}
+		\begin{dcases}
+			Z_\text{C}(T, V, E) = \int_0^\infty g(E) e^{- \beta E} dE \\
+			g(E) \equiv \Omega(N, V, E) = \frac{1}{2 \pi i} \int_{- \infty}^\infty e^{(x + i y) E} Z_\text{C}(T = {\textstyle \frac{1}{k_B (x + i y)}}, V, E) dy,
+		\end{dcases}
+	\end{equation}
+	其中 $x > 0$ 是任意正实数. 
+\end{itemize}
+
+\subsection{the partition function of the classical ideal gas} \label{subsection 3.3.1}
+\begin{itemize}
+	\item 系统由全同不可区分粒子组成, 那么
+	\begin{align}
+		Z_\text{C}(T, V, N) &= \int \frac{d^{3 N} p d^{3 N} q}{N! h^{3 N}} e^{- \beta \sum_{i = 1}^N \frac{p_i^2}{2 m}} \notag \\
+		&= \frac{1}{N!} \Big( \frac{V}{h^3} \sqrt{2 \pi m k_B T} \Big)^N.
+	\end{align}
+	
+	\item 观察可见
+	\begin{equation}
+		Z_\text{C}(T, V , N) = \frac{(Z_\text{C}(T, V , 1))^N}{N!},
+	\end{equation}
+	这对于任何由全同不可分辨无相互作用粒子组成的系统都成立 (无论这些粒子是否有 internal degrees of freedom).
+\end{itemize}
+
+\section{energy fluctuations in the canonical ensemble}
+\begin{itemize}
+	\item 通过 canonical ensemble 和 microcanonical ensemble 计算出的热力学量必须一致, 这种一致性的来源如下.
+	
+	\item canonical ensemble 和 microcanonical ensemble 的主要区别在于能量的取值范围, 考虑能量的方差
+	\begin{align}
+		\braket{(\Delta E)^2} &= \braket{E^2} - \braket{E}^2 = \frac{1}{Z_\text{C}} \frac{\partial^2}{\partial \beta^2} Z_\text{C} - \Big( - \frac{\partial}{\partial \beta} \ln Z_\text{C} \Big)^2 \notag \\
+		&= \frac{\partial^2}{\partial \beta^2} \ln Z_\text{C} = \Big( \frac{\partial U}{\partial \beta} \Big)_{V, N} = k_B T^2 C_V,
+	\end{align}
+	因此
+	\begin{equation}
+		\frac{\sqrt{\braket{(\Delta E)^2}}}{U} = \frac{k_B T}{U} \sqrt{\frac{C_V}{k_B}} \sim N^{- \frac{1}{2}},
+	\end{equation}
+	可见能量涨落很小, canonical ensemble 和 microcanonical ensemble 的差异可以忽略.
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line\\
+	
+	\item 在 canonical ensemble 中, 最概然能量 $E^*$ 为
+	\begin{equation}
+		\frac{\partial \Omega(E, V, N) e^{- \beta E}}{\partial E} \Big|_{E^*} = 0 \Longrightarrow \Big( \frac{\partial \ln \Omega}{\partial E} \Big)_{V, N} \Big|_{E^*} = \frac{1}{k_B T},
+	\end{equation}
+	对比热力学中的公式 $\big( \frac{\partial S}{\partial U} \big)_{V, N} = \frac{1}{T}$, 可见
+	\begin{equation}
+		E^* = U,
+	\end{equation}
+	能量的 most probable value 等于其 mean value (这显然是 $N \rightarrow \infty$ 情况下的近似结果).
+	
+	\item 系统处于能量 $E$ 的概率是
+	\begin{equation}
+		P(E) = \frac{\Omega(E) e^{- \beta E}}{Z_\text{C}} \approx \frac{1}{Z_\text{C}} e^{- \beta (U - T S)} e^{- \frac{(E - U)^2}{2 k_B T^2 C_V}}.
+	\end{equation}
+	
+	\begin{tcolorbox}[title=calculation:]
+		对 $\ln(\Omega(E) e^{- \beta E})$ 在 $E = U$ 附近展开,
+		\begin{equation}
+			\frac{\partial^2}{\partial E^2} \Big|_U \ln(\Omega(E) e^{- \beta E}) = - \frac{1}{k_B T^2 C_V}.
+		\end{equation}
+	\end{tcolorbox}
+	
+	因此, partition function 为
+	\begin{equation}
+		Z_\text{C}(T, V, N) \simeq e^{- \beta (U - T S)} \sqrt{2 \pi k_B T^2 C_V},
+	\end{equation}
+	注意到
+	\begin{equation}
+		- k_B T \ln Z_\text{C} \equiv F = (U - T S) - \underbrace{\frac{k_B T}{2} \ln(2 \pi k_B T^2 C_V)}_{\sim O(\ln N)},
+	\end{equation}
+	第二项可以忽略, 因此 $F \mathcolor{red}{\approx} U - T S$.
+\end{itemize}
+
+\section{the equipartition theorem and the virial theorem}
+\subsection{the equipartition theorem}
+\begin{itemize}
+	\item 能均分定理 (equipartition theorem, or classical theorem of equipartition of energy) 适用于\textbf{哈密顿量}为\textbf{二次型}的系统,
+	\begin{equation}
+		H = \sum_{i, j} \Big( \frac{p_i p_j}{2 m_{i j}} + \frac{1}{2} \frac{\partial^2 H}{\partial q_i \partial q_j} q_i q_j \Big),
+	\end{equation}
+	所以,
+	\begin{equation}
+		\begin{dcases}
+			\frac{\partial H}{\partial p_i} = \sum_j \frac{p_j}{m_{i j}} \\
+			\frac{\partial H}{\partial q_i} = \sum_j \frac{\partial^2 H}{\partial q_i \partial q_j} q_j
+		\end{dcases} \Longrightarrow H = \frac{1}{2} \sum_i \Big( p_i \frac{\partial H}{\partial p_i} + q_i \frac{\partial H}{\partial q_i} \Big).
+	\end{equation}
+	
+	\item 考虑
+	\begin{equation}
+		\braket{x_i \frac{\partial H}{\partial x_j}} = \frac{\int x_i \frac{\partial H}{\partial x_j} e^{- \beta H} d\omega}{\int e^{- \beta H} d\omega} = \frac{1}{\beta} \delta_{i j},
+	\end{equation}
+	其中, $x_i$ 是相空间的坐标, $x = (p_1, \cdots, p_\nu, q_1, \cdots, q_\nu)$.
+	
+	\begin{tcolorbox}[title=proof:]
+		\begin{align}
+			\int x_i \frac{\partial H}{\partial x_j} e^{- \beta H} d\omega &= - \int x_i \frac{1}{\beta} \frac{\partial e^{- \beta H}}{\partial x_j} d\omega \notag \\
+			&= - \frac{1}{\beta} \int \Big( \frac{\partial}{\partial x_j} (x_i e^{- \beta H}) - \delta_{i j} e^{- \beta H} \Big) d\omega \notag \\
+			&= \frac{1}{\beta} \delta_{i j} Z_\text{C} - \frac{1}{\beta} \int (x_i e^{- \beta H}) \Big|_{x_j = (x_j)_1}^{(x_j)_2} d\omega_{(j)}
+		\end{align}
+		哈密顿量在边界处, $x_j = (x_j)_{1, 2}$, 为零, 所以...
+	\end{tcolorbox}
+	
+	\item 所以, 能量的期望值为,
+	\begin{equation}
+		\braket{H} = \frac{1}{2} \sum_i \Big( \braket{p_i \frac{\partial H}{\partial p_i}} + \braket{q_i \frac{\partial H}{\partial q_i}} \Big) = \frac{f}{2} k_B T
+	\end{equation}
+	其中, $f$ 是系统的 number of nonvanishing coefficients, 是 $2 \nu$ 减去循环坐标的数量.
+	
+	\item 能均分定理的适用条件:
+	\begin{enumerate}
+		\item 经典力学,
+		
+		\item 哈密顿量为二次型.
+	\end{enumerate}
+\end{itemize}
+
+\subsection{the virial theorem}
+\begin{itemize}
+	\item the virial theorem: 对于哈密顿量, $H = T + V(q)$, 的动能项为二次型, 且势能项与 $p$ 无关的情况, 有
+	\begin{equation}
+		\braket{T} = - \frac{1}{2} \mathcal{V},
+	\end{equation}
+	其中
+	\begin{equation}
+		\mathcal{V} := \sum_i \braket{q_i \dot{p}_i}
+	\end{equation}
+	被称作系统的 virial.
+	
+	\begin{tcolorbox}[title=proof:]
+		考虑,
+		\begin{equation}
+			G = \sum_i p_i q_i \Longrightarrow \frac{d G}{dt} = \sum_i \underbrace{\dot{q}_i}_{= \frac{\partial H}{\partial p_i}} p_i + q_i \dot{p}_i = 2 T + \sum_i q_i \dot{p}_i,
+		\end{equation}
+		系统运动的范围有限, 所以,
+		\begin{equation}
+			\braket{\frac{d G}{dt}} = 0 \Longrightarrow \braket{T} = - \frac{1}{2} \sum_i \braket{q_i \dot{p}_i}.
+		\end{equation}
+	\end{tcolorbox}
+\end{itemize}
+
+\subsection{classical ideal gas and nonideal gas}
+\begin{itemize}
+	\item 对于理想气体, 其 virial 为
+	\begin{align}
+		\mathcal{V} = \sum_{i = 1}^N \braket{\vec{x}_i \cdot \vec{F}_i} &= \oint_S \vec{x} \cdot (- P d\vec{S}) \notag \\
+		&= - P \oint \nabla \cdot \vec{x} \, dV = - 3 P V,
+	\end{align}
+	结合 equipartition theorem 可知 $\braket{T} = \frac{3}{2} N k_B T$, 所以
+	\begin{equation}
+		\frac{3}{2} N k_B T = - \frac{1}{2} (- 3 P V) \Longrightarrow P V = N k_B T.
+	\end{equation}
+	
+	\item 对于粒子间存在 two-body interaction potential $u(r)$ 的 nonideal gas, 利用相同的办法可得 virial equation of state,
+	\begin{align}
+		& \mathcal{V} = \sum_{i = 1}^N \braket{\vec{x}_i \cdot \vec{F}_i} = - 3 P V - \sum_{i < j} \braket{\frac{\partial u(r = r_{i j})}{\partial r} r_{i j}} \notag \\
+		\Longrightarrow & \frac{P V}{N k_B T} = 1 - \frac{1}{D} \frac{1}{N k_B T} \sum_{i < j} \braket{\frac{\partial u(r = r_{i j})}{\partial r} r_{i j}},
+	\end{align}
+	其中 $D = 3$ 是空间维数.
+\end{itemize}
+
+\section{a system of harmonic oscillators}
+\begin{itemize}
+	\item 考虑一个由 practically independent harmonic oscillators 组成的系统. 两个重要的例子是:
+	\begin{enumerate}
+		\item 黑体辐射理论 (光子的统计力学),
+		
+		\item lattice vibration 理论 (phonons 的统计力学).
+	\end{enumerate}
+\end{itemize}
+
+\subsection{classically}
+\begin{itemize}
+	\item 系统的 partition function 为
+	\begin{align}
+		& Z_\text{C}(T, V, N = 1) = \int \frac{dp dq}{h} \, e^{- \beta (\frac{p^2}{2 m} + \frac{1}{2} m^2 \omega^2 q^2)} = \frac{k_B T}{\hbar \omega} \notag \\
+		\Longrightarrow & Z_\text{C}(T, V, N) = \Big( \frac{k_B T}{\hbar \omega} \Big)^N,
+	\end{align}
+	注意谐振子是 distinguishable, 因为每个谐振子代表 photons 或 phonons 的一个能级, 可区分.
+	
+	\item 得到
+	\begin{equation}
+		\begin{dcases}
+			U = N k_B T \\
+			S = N k_B \Big( 1 + \ln \frac{k_B T}{\hbar \omega} \Big) \\
+			\mu = - k_B T \ln \frac{k_B T}{\hbar \omega} \\
+			\Omega(E \geq 0) = \frac{1}{(\hbar \omega)^N} \frac{E^{N - 1}}{(N - 1)!}
+		\end{dcases}.
+	\end{equation}
+\end{itemize}
+
+\subsection{quantum mechanically}
+\begin{itemize}
+	\item 每个谐振子有如下能级,
+	\begin{equation}
+		\epsilon_n = \hbar \omega \Big( n + \frac{1}{2} \Big),
+	\end{equation}
+	因此
+	\begin{align}
+		& Z_\text{C}(T, V, N = 1) = \frac{1}{2 \sinh \frac{\hbar \omega}{2 k_B T}} \notag \\
+		\Longrightarrow & Z_\text{C}(T, V, N) = \Big( \frac{1}{2 \sinh \frac{\hbar \omega}{2 k_B T}} \Big)^N.
+	\end{align}
+	
+	\item 得到
+	\begin{equation}
+		\begin{dcases}
+			U = N \hbar \omega \Big( \frac{1}{e^{\beta \hbar \omega} - 1} + \frac{1}{2} \Big) \\
+			S = N k_B \Big( \frac{\beta \hbar \omega}{e^{\beta \hbar \omega} - 1} - \ln(1 - e^{- \beta \hbar \omega}) \Big) \\
+			\mu = \frac{1}{2} \hbar \omega + k_B T \ln(1 - e^{- \beta \hbar \omega}) \\
+			C_P = C_V = N k_B (\beta \hbar \omega)^2 \frac{e^{\beta \hbar \omega}}{(e^{\beta \hbar \omega} - 1)^2}
+		\end{dcases},
+	\end{equation}
+	以及
+	\begin{equation}
+		\Omega(E = \hbar \omega ({\textstyle \frac{N}{2}} + M)) = \begin{pmatrix}
+			N + M - 1 \\
+			M
+		\end{pmatrix} \equiv \frac{(N + M - 1)!}{M! (N - 1)!}.
+	\end{equation}
+\end{itemize}
+
+\section{the statistics of paramagnetism}
+\begin{itemize}
+	\item 
+\end{itemize}
