@@ -3,7 +3,7 @@
 \begin{itemize}
 	\item 系统 $A$ 与 heat reservoir $A_\text{HR}$ 存在热交换, 它们组成整体系统 $A_0$,
 	\begin{equation}
-		E_0 = E + E_\text{0}, \quad \Omega_0 = \sum_{E = 0}^{E_0} \Omega(E) \Omega_\text{HR}(E_0 - E).
+		E_0 = E + E_\text{HR}, \quad \Omega_0 = \sum_{E = 0}^{E_0} \Omega(E) \Omega_\text{HR}(E_0 - E).
 	\end{equation}
 	
 	\item 系统 $A$ 处于能量 $E$ 的\textbf{某个 microstate}的概率为
@@ -219,14 +219,14 @@
 		\item $Z_\text{C}(T, V, N)$ 对 $V, N$ 的依赖源于 $E_i(V, N)$.
 	\end{itemize}
 	
-	\item 另外, 求和可以转化为积分 (使用 \href{https://en.wikipedia.org/wiki/Laplace_transform#Inverse_Laplace_transform}{Laplace transformation})
+	\item 另外, 求和可以转化为积分 (使用 \href{https://en.wikipedia.org/wiki/Laplace_transform#Inverse_Laplace_transform}{Laplace transform})
 	\begin{equation}
 		\begin{dcases}
 			Z_\text{C}(T, V, E) = \int_0^\infty g(E) e^{- \beta E} dE \\
-			g(E) \equiv \Omega(N, V, E) = \frac{1}{2 \pi i} \int_{- \infty}^\infty e^{(x + i y) E} Z_\text{C}(T = {\textstyle \frac{1}{k_B (x + i y)}}, V, E) dy,
+			g(E) \equiv \frac{\Omega(N, V, E)}{\Delta E} = \frac{1}{2 \pi i} \int_{- \infty}^\infty e^{(x + i y) E} Z_\text{C}(T = {\textstyle \frac{1}{k_B (x + i y)}}, V, E) dy,
 		\end{dcases}
 	\end{equation}
-	其中 $x > 0$ 是任意正实数. 
+	其中 $x > 0$ 是任意正实数, $\Delta E$ 是能级间隙. 
 \end{itemize}
 
 \subsection{the partition function of the classical ideal gas} \label{subsection 3.3.1}
@@ -234,7 +234,7 @@
 	\item 系统由全同不可区分粒子组成, 那么
 	\begin{align}
 		Z_\text{C}(T, V, N) &= \int \frac{d^{3 N} p d^{3 N} q}{N! h^{3 N}} e^{- \beta \sum_{i = 1}^N \frac{p_i^2}{2 m}} \notag \\
-		&= \frac{1}{N!} \Big( \frac{V}{h^3} \sqrt{2 \pi m k_B T} \Big)^N.
+		&= \frac{1}{N!} \Big( \frac{V}{h^3} (2 \pi m k_B T)^{3 / 2} \Big)^N.
 	\end{align}
 	
 	\item 观察可见
