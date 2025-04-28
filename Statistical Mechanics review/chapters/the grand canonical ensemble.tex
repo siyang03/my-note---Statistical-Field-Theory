@@ -176,7 +176,7 @@
 	\item 系统的 partition function 为 (固体每个粒子有 $D = 3$ 个振动方向, 对 $\phi(T)$ 作相应改动)
 	\begin{equation}
 		Z_\text{C}(T, V, N) = (Z_\text{C}(T, V, 1))^N, \quad Z_\text{C}(T, V, 1) = \phi(T) = \begin{dcases}
-			\frac{1}{2 \sinh \frac{\hbar \omega}{k_B T}} & \text{quantum mechanically} \\
+			\frac{1}{2 \sinh \frac{\hbar \omega}{2 k_B T}} & \text{quantum mechanically} \\
 			\frac{k_B T}{\hbar \omega} & \text{classically}
 		\end{dcases}.
 	\end{equation}
@@ -204,13 +204,71 @@
 		\frac{N_\text{g}}{V_\text{g} \phi_\text{g}(T)} = f_\text{g} = f_\text{s} \simeq \frac{1}{\phi_\text{s}(T)} \Longrightarrow \frac{N_\text{g}}{V_\text{g}} = \frac{P_\text{vapor}}{k_B T} = \frac{\phi_\text{g}(T)}{\phi_\text{s}(T)},
 	\end{equation}
 	代入单原子气体的 $\phi_\text{g}(T)$ 和 Einstein model 的 $\phi_\text{s}(T)$, 得到
-	\begin{equation}
-		P_\text{vapor} = k_B T \Big( \frac{2 \pi m k_B T}{h^2} \Big)^{\frac{2}{3}} \Big( 2 \sinh \frac{\hbar \omega}{k_B T} \Big)^3 e^{- \frac{\epsilon}{k_B T}},
-	\end{equation}
+	\begin{align}
+		P_\text{vapor} &= k_B T \Big( \frac{2 \pi m k_B T}{h^2} \Big)^{\frac{3}{2}} \Big( 2 \sinh \frac{\hbar \omega}{2 k_B T} \Big)^3 e^{- \frac{\epsilon}{k_B T}} \notag \\
+		&\overset{\text{classically}}{\simeq} k_B T \Big( \frac{m \omega^2}{2 \pi k_B T} \Big)^{\frac{3}{2}} e^{- \frac{\epsilon}{k_B T}},
+	\end{align}
 	其中 $\epsilon = \epsilon_\text{g} - \epsilon_\text{s}$ 是粒子处于固态和气态的能量差.
 \end{itemize}
 
 \section{thermodynamic phase diagram}
 \begin{itemize}
-	\item 
+	\item 一个典型的 $P$-$V$-$T$ phase diagram 如下 (来自 \href{https://en.wikipedia.org/wiki/File:PVT_3D_diagram-en.svg}{Wikipedia}):
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.35]{figures/P-V-T phase diagram with comments.pdf}
+		\caption{$P$-$V$-$T$ phase diagram}
+	\end{figure}
+	
+	\item 几个重要的特征:
+	\begin{itemize}
+		\item triple line \& triple point.
+		
+		\item critical point.
+		
+		\item two-phase coexistence planes.
+	\end{itemize}
+\end{itemize}
+
+\section{phase equilibrium and the Clausius-Clapeyron equation}
+\begin{itemize}
+	\item $P_\sigma(T)$ 描述 $P$-$T$ 面上的 phase boundary between two phases, 有 Clausius-Clapeyron equation,
+	\begin{equation}
+		\frac{dP_\sigma}{dT} = \frac{s_B - s_A}{v_B - v_A} = \frac{L}{T \Delta v},
+	\end{equation}
+	其中 $s$ 是 entropy per particle, $v$ 是 specific volume, $L$ 是 latent heat per particle (即 $A$ 相转化为 $B$ 相的吸热).
+	
+	\begin{tcolorbox}[title=proof:]
+		两相共存要求 $\mu_A = \mu_B$, 对于 homogeneous systems,
+		\begin{equation}
+			s dT = v dP - d\mu \Longrightarrow d\mu = - s dT + v dP,
+		\end{equation}
+		因此
+		\begin{equation}
+			- s_A dT + v_A dP = - s_B dT + v_B dP \Longrightarrow \cdots
+		\end{equation}
+	\end{tcolorbox}
+	
+	\item 在 triple point, 3 条两相共存线的斜率保证任何一条共存线 (比如 $A$-$B$ 相共存线) 指向第三个相 ($C$ 相), 如下图所示.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=1]{figures/the slopes of 3 coexistence lines.pdf}
+		\caption{the slopes of 3 coexistence lines.}
+	\end{figure}
+	
+	\begin{tcolorbox}[title=proof:]
+		注意到
+		\begin{equation}
+			\Delta s_{AB} + \Delta s_{BC} + \Delta s_{CA} \equiv 0, \quad \Delta v_{AB} + \Delta v_{BC} + \Delta v_{CA} \equiv 0,
+		\end{equation}
+		为了方便, 接下来分别用指标 $1, 2, 3$ 替代 $AB, BC, CA$.
+		
+		我们需要证明 $u_i = (\Delta v_i, \Delta s_i), i = 1, 2, 3$ 满足
+		\begin{equation}
+			\sum_{i = 1}^3 \alpha_i u_i = 0, \quad \text{with} \quad \alpha_i > 0,
+		\end{equation}
+		显然成立, $\alpha_i = 1$.
+	\end{tcolorbox}
 \end{itemize}

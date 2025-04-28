@@ -1,0 +1,96 @@
+\chapter{formulation of quantum statistics}
+\section{quantum mechanical ensemble theory: the density matrix}
+\begin{itemize}
+	\item 用 density matrix 描述一个 ensemble,
+	\begin{equation}
+		\rho = \sum_i p_i \ket{\psi_i} \bra{\psi_i},
+	\end{equation}
+	在 Schrödinger 绘景下
+	\begin{equation}
+		i \hbar \frac{\partial \rho}{\partial t} = [H, \rho].
+	\end{equation}
+	\begin{itemize}
+		\item density matrix 满足
+		\begin{equation}
+			\mathrm{Tr} \, \rho = 1, \quad \mathrm{Tr} \, \rho^2 \leq 1,
+		\end{equation}
+		其中第二个等号在 pure state 下成立.
+	\end{itemize}
+	
+	\item the von Neumann entropy is
+	\begin{equation}
+		S = - \mathrm{Tr} \, \rho \ln \rho.
+	\end{equation}
+	
+	\item stationary ensemble 的定义与 chapter \ref{2} 中一样, 见 \eqref{2.1.2}.
+\end{itemize}
+
+\section{statistics of the various ensembles}
+\subsection{the microcanonical ensemble}
+\begin{itemize}
+	\item microcanonical ensemble 的 density matrix 为
+	\begin{equation}
+		\rho = \sum_{\text{some} \ i} \frac{1}{\Omega} \ket{i} \bra{i},
+	\end{equation}
+	其中 $\ket{i}$ 是能量本征态, 对所有 accessible states 求和.
+\end{itemize}
+
+\subsection{the canonical ensemble}
+\begin{itemize}
+	\item canonical ensemble 的 density matrix 为
+	\begin{equation}
+		\rho = \frac{e^{- \beta H}}{Z_\text{C}}, \quad Z_\text{C} = \mathrm{Tr} \, e^{- \beta H}.
+	\end{equation}
+	
+	\item 各热力学量为
+	\begin{equation}
+		\begin{dcases}
+			F = - k_B T \ln Z_\text{C}(T, V, N) \\
+			S = - \Big( \frac{\partial F}{\partial T} \Big)_{V, N} = k_B \Big( \ln Z_\text{C} + T \frac{\partial}{\partial T} \ln Z_\text{C} \Big)
+		\end{dcases}.
+	\end{equation}
+\end{itemize}
+
+\subsection{the grand canonical ensemble}
+\begin{itemize}
+	\item grand canonical ensemble 的 density matrix 为
+	\begin{equation}
+		\rho = \frac{e^{- \beta (H - \mu N)}}{Z_\text{GC}}.
+	\end{equation}
+	
+	\item 各热力学量为
+	\begin{equation}
+		\begin{dcases}
+			\Phi_\text{G} = k_B T \ln Z_\text{GC}(T, V, \mu) \\
+			S = \Big( \frac{\partial \Phi_\text{G}}{\partial T} \Big)_{V, \mu} = k_B \Big( \ln Z_\text{GC} + T \frac{\partial}{\partial T} \ln Z_\text{GC} \Big)
+		\end{dcases}.
+	\end{equation}
+\end{itemize}
+
+\section{examples}
+\subsection{an electron in a magnetic field}
+\begin{itemize}
+	\item 电子自旋为 $\frac{\hbar}{2} \vec{\sigma}$, 那么电子在磁场中的 Hamiltonian 为
+	\begin{equation}
+		\hat{H} = - \mu_0 (- \mu_B \vec{\sigma}) \cdot \vec{H} = \mu_0 \mu_B H \sigma_z,
+	\end{equation}
+	其中 Bohr magneton $\mu_B = \frac{e \hbar}{2 m}$.
+	
+	\item density matrix in the canonical ensemble is
+	\begin{equation}
+		\rho = \frac{e^{- \beta \hat{H}}}{Z_\text{C}} = \frac{1}{2 \cosh(\beta \mu_0 \mu_B H)} \begin{pmatrix}
+			e^{- \beta \mu_0 \mu_B H} & 0 \\
+			0 & e^{\beta \mu_0 \mu_B H}
+		\end{pmatrix}.
+	\end{equation}
+	
+	\item 得到
+	\begin{equation}
+		\braket{\sigma_z} = \mathrm{Tr}(\sigma_z \rho) = \tanh(\beta \mu_0 \mu_B H).
+	\end{equation}
+\end{itemize}
+
+\subsection{a free particle in a box}
+\begin{itemize}
+	\item 
+\end{itemize}
