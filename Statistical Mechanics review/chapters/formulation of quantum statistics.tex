@@ -67,8 +67,7 @@
 	\end{equation}
 \end{itemize}
 
-\section{examples}
-\subsection{an electron in a magnetic field}
+\section{example: an electron in a magnetic field}
 \begin{itemize}
 	\item 电子自旋为 $\frac{\hbar}{2} \vec{\sigma}$, 那么电子在磁场中的 Hamiltonian 为
 	\begin{equation}
@@ -90,7 +89,74 @@
 	\end{equation}
 \end{itemize}
 
-\subsection{a free particle in a box}
+\section{the thermal de Broglie wavelength and the statistical potential}
 \begin{itemize}
+	\item 考虑一个由 2 个 indistinguishable 粒子组成的系统.
+	
+	\item 在 $\vec{x}_1, \vec{x}_2$ 分别发现一个粒子的概率密度为
+	\begin{equation} \label{5.4.1}
+		\tensor[_{\text{F or B}}]{\braket{\vec{x}_1, \vec{x}_2 | \rho_\text{C} | \vec{x}_1, \vec{x}_2}}{_{\text{F or B}}} \approx \frac{1}{V^2} \Big( 1 + \eta e^{- 2 \pi \frac{|\vec{x}_1 - \vec{x}_2|^2}{\lambda^2}} \Big), \quad \eta = \begin{dcases}
+			+ 1 & \text{Bosons} \\
+			- 1 & \text{Fermions}
+		\end{dcases},
+	\end{equation}
+	其中
+	\begin{equation}
+		\lambda = \Big( \frac{2 \pi \beta \hbar^2}{m} \Big)^{\frac{1}{2}}
+	\end{equation}
+	称为 thermal de Broglie wavelength.
+	
+	\begin{tcolorbox}[title=calculation:]
+		\begin{align}
+			\tensor[_{\text{F}}]{\braket{\vec{x}_1, \vec{x}_2 | e^{- \beta H} | \vec{x}_1, \vec{x}_2}}{_{\text{F}}} &= \int \frac{d^3 k_1}{(2 \pi)^3} \frac{d^3 k_2}{(2 \pi)^3} e^{- \beta \big( \frac{k_1^2}{2 m} + \frac{k_2^2}{2 m} \big)} \frac{1}{2} \Big( 1 - \mathrm{Re} \, e^{i (\vec{x}_1 - \vec{x}_2) \cdot (\vec{k}_1 - \vec{k}_2)} \Big) \notag \\
+			&= \frac{1}{2} \frac{1}{(2 \pi)^6} \Big( \frac{2 \pi m}{\beta \hbar^2} \Big)^3 - \frac{1}{2} \frac{1}{(2 \pi)^6} \Big( \frac{2 \pi m}{\beta \hbar^2} \Big)^3 \mathrm{Re} \, \exp \Big( - \frac{m}{\beta \hbar^2} |\vec{x}_1 - \vec{x}_2|^2 \Big) \notag \\
+			&= \frac{1}{2 \lambda^6} \Big( 1 - e^{- 2 \pi \frac{|\vec{x}_1 - \vec{x}_2|^2}{\lambda^2}} \Big),
+		\end{align}
+		那么
+		\begin{align}
+			Z_\text{C} &= \int d^3 x_1 d^3 x_2 \, \tensor[_{\text{F}}]{\braket{\vec{x}_1, \vec{x}_2 | e^{- \beta H} | \vec{x}_1, \vec{x}_2}}{_{\text{F}}} \notag \\
+			&= \frac{V^2}{2 \lambda^6} - \frac{1}{2 \lambda^6} \int d^3 x_1 d^3 x_2 \, e^{- 2 \pi \frac{|\vec{x}_1|^2 + |\vec{x}_2|^2 - 2 \vec{x}_1 \cdot \vec{x}_2}{\lambda^2}} \notag \\
+			&= \frac{V^2}{2 \lambda^6} - \frac{1}{2 \lambda^6} \int d^3 x_2 \, e^{- 2 \pi \frac{|\vec{x}_2|^2}{\lambda^2}} \Big( \frac{\pi \lambda^2}{2 \pi} \Big)^{\frac{3}{2}} e^{\frac{\lambda^2}{8 \pi} \big( \frac{4 \pi}{\lambda^2} \vec{x}_2 \big)^2} \notag \\
+			&= \frac{V^2}{2 \lambda^6} \Big( 1 - \frac{1}{2^{3 / 2}} \frac{\lambda^3}{V} \Big) \approx \frac{V^2}{2 \lambda^6},
+		\end{align}
+		Bosons 的情况类似.
+	\end{tcolorbox}
+	
+	\item 如果两个粒子可区分,
+	\begin{equation}
+		\braket{\vec{x}_1, \vec{x}_2 | \rho_\text{C} | \vec{x}_1, \vec{x}_2} = \frac{1}{V^2}.
+	\end{equation}
+	
+	\item 因此, \eqref{5.4.1} 中的 correlation 可以用一个势能 $v_s(r)$ 替代, 从而用经典力学的方法模拟这种量子统计效应,
+	\begin{equation}
+		v_s(r) = - k_B T \ln \Big( 1 + \eta e^{- 2 \pi \frac{|\vec{x}_1 - \vec{x}_2|^2}{\lambda^2}} \Big),
+	\end{equation}
+	函数图像如下:
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.5]{figures/statistical potential.pdf}
+		\caption{statistical potential.}
+	\end{figure}
+	
+	\begin{tcolorbox}[title=proof:]
+		只需要在 canonical ensemble 中引入一个 Boltzmann factor
+		\begin{equation}
+			e^{- \beta v_s(r)} = 1 + \eta e^{- 2 \pi \frac{|\vec{x}_1 - \vec{x}_2|^2}{\lambda^2}}.
+		\end{equation}
+	\end{tcolorbox}
+\end{itemize}
+
+\section{eigenstate thermalization hypothesis}
+\begin{itemize}
+	\item ergodicity of classical systems 要求几乎所有初始态都演化到均匀覆盖相空间中的等能面.
+	\begin{itemize}
+		\item integrable systems 一定不是 ergodic, 因为它们有 $\nu$ 个 constants of motion, 无法覆盖 $\nu - 1$ 维 energy surface.
+		
+		\item ergodic hypothesis 只在几个特例里被证明, 如 hard sphere gas.
+	\end{itemize}
+	
+	\item 因为量子系统的演化有幺正性, 所以即便对应的经典系统有遍历性, 这个量子系统也不可能出现 ergodic-like behavior, 因此孤立的量子系统不可能热化.
+	
 	\item 
 \end{itemize}
