@@ -158,5 +158,84 @@
 	
 	\item 因为量子系统的演化有幺正性, 所以即便对应的经典系统有遍历性, 这个量子系统也不可能出现 ergodic-like behavior, 因此孤立的量子系统不可能热化.
 	
-	\item 
+	\noindent\hdashrule[0.5ex]{\linewidth}{0.5pt}{1mm} % horizontal dashed line
+	
+	\item 如果一个可观测量 $\braket{O}$ 从 a wide range of possible initial values, 在实验时间尺度内, 演化到一个 unique time-independent value (with small fluctuations), 则称 $O$ 表现出 equilibrium behavior,
+	\begin{equation}
+		O \ \text{displays equilibrium behavior} \iff \lim_{t \rightarrow \infty} \braket{O(t)} = \text{Const.}.
+	\end{equation}
+	\begin{itemize}
+		\item 一般来说, 这样的 $O$ 不可能存在, 因为
+		\begin{equation}
+			\braket{\psi(t) | O | \psi(t)} = \sum_{m, n} c_m^* O_{m n} c_n e^{- i (E_n - E_m) t / \hbar},
+		\end{equation}
+		其时间平均值为
+		\begin{equation}
+			\text{time average of} \ \braket{O(t)} = \sum_n |c_n|^2 O_{n n} + \sum_{E_m = E_n, m \neq n} c_m^* O_{m n} c_n,
+		\end{equation}
+		永远依赖于初始条件.
+	\end{itemize}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item 但是, 可能存在一些多体系统, 它们的  a large but restricted set of pure states and a large but restricted set of observables will thermalize.
+	
+	\item 注意到:
+	\begin{itemize}
+		\item 对于 homogeneous systems, $S \propto \nu$, ($\nu$ 是 degrees of freedom), 因此能量本征态的数量正比于 $e^{\alpha \nu}$.
+		
+		\item 能级简并数可以忽略, (比如理想气体 $\Omega(E) \propto \big( \frac{e^{\alpha'}}{\nu} \big)^\nu$).
+	\end{itemize}
+	
+	\item 此时
+	\begin{equation}
+		\text{time average of} \ \braket{O(t)} \simeq \sum_n |c_n|^2 O_{n n},
+	\end{equation}
+	考虑 pure state with energy eigenvalue $E$,
+	\begin{equation}
+		c_n \neq 0 \quad \text{when} \quad E_n = E,
+	\end{equation}
+	令
+	\begin{equation}
+		O_{n n} = O(E) + \delta O_n, \quad E_n = E,
+	\end{equation}
+	且如果 $\delta O_n$ 满足
+	\begin{equation}
+		\sum_n |c_n|^2 \delta O_n \ll O(E), \forall c_n,
+	\end{equation}
+	那么 $\braket{O(t)}$ 的时间平均就与初始条件 (即 $c_n$) 的选取无关了.
+	
+	\item 最后, 还要求 $\braket{O(t = 0)}$ 可以明显偏离 $O(E)$, 但是随后 $t > 0$ 时的涨落却可以忽略.
+	
+	\noindent\hdashrule[0.5ex]{\linewidth}{0.5pt}{1mm} % horizontal dashed line
+	
+	\item 满足这些条件的 local operator 具有如下形式
+	\begin{equation}
+		O_{m n} \approx O(E_n) \delta_{m n} + \frac{O_2(E_m, E_n)}{\sqrt{\Gamma}} R_{m n},
+	\end{equation}
+	其中 $\{R_{m n}\}$ 是一个 $\Gamma \times \Gamma$ real symmetric Gaussian random matrix, $O(\cdot), O_2(\cdot, \cdot)$ 是光滑函数.
+	
+	\item random matrix $R$ 具有以下特征:
+	\begin{itemize}
+		\item 对角元平均值为 $0$, and variance $\sigma^2 = 2$.
+		
+		\item 满足
+		\begin{equation} \label{5.5.9}
+			\begin{dcases}
+				\frac{1}{\Gamma} \braket{\mathrm{Tr} \, R} = 0 \\
+				\frac{1}{\Gamma} \braket{\mathrm{Tr} \, R^2} = \Gamma + 1
+			\end{dcases},
+		\end{equation}
+		其中 $\braket{\cdot}$ 表示对矩阵元的 normal distribution 的期望值.
+		
+		\item 对于 $\Gamma \gg 1$, $R$ 的本征值 $\lambda$ 的概率分布函数呈半圆形
+		\begin{equation}
+			\rho(x = {\textstyle \frac{\lambda}{\sqrt{\Gamma}}}) = \frac{1}{2 \pi} \sqrt{4 - x^2}, x \in [- 2, 2],
+		\end{equation}
+		因此 $\braket{(\Delta \lambda)^2} = \Gamma$, 与 \eqref{5.5.9} 相符 ($\Gamma \gg 1$).
+		
+		\item 还有一些性质, 见 Pathria, Beale, \textit{Statistical Mechanics}, page 147.
+	\end{itemize}
+	
+	\item ...
 \end{itemize}
