@@ -81,8 +81,8 @@
 \subsection{in a grand canonical ensemble}
 \begin{itemize}
 	\item 系统的 grand partition function 为
-	\begin{equation}
-		Z_\text{GC} = \sum_{\{n_i = 0\}}^{\{n_i = \text{max}\}} W\{n_i\} e^{- \beta E\{n_i\} - \alpha N\{n_i\}} = \begin{dcases}
+	\begin{equation} \label{6.1.10}
+		Z_\text{GC} = \begin{dcases}
 			\prod_i (1 - e^{- \alpha - \beta \epsilon_i})^{- g_i} & \text{Bose-Einstein} \\
 			\prod_i (1 + e^{- \alpha - \beta \epsilon_i})^{g_i} & \text{Fermi-Dirac} \\
 			\prod_i \exp \Big( g_i e^{- \alpha - \beta \epsilon_i} \Big) & \text{Boltzmann}
@@ -97,8 +97,15 @@
 	\end{figure}
 	
 	\begin{tcolorbox}[title=calculation:]
-		对 Bose-Einstein statistics,
+		麻烦的方法是
 		\begin{equation}
+			Z_\text{GC} = \sum_{\{n_i = 0\}}^{\{n_i = \text{max}\}} W\{n_i\} e^{- \beta E\{n_i\} - \alpha N\{n_i\}}.
+		\end{equation}
+		
+		\noindent\hdashrule[0.5ex]{\linewidth}{0.5pt}{1mm} % horizontal dashed line
+		
+		对 Bose-Einstein statistics,
+		\begin{equation} \label{6.1.12}
 			Z_\text{GC} = \prod_i \sum_{n_i = 0}^\infty \frac{(n_i + g_i - 1)!}{n_i! (g_i - 1)!} (e^{- \alpha - \beta \epsilon_i})^{n_i},
 		\end{equation}
 		注意到 Taylor expansion
@@ -110,7 +117,7 @@
 			Z_\text{GC} = \prod_i (1 - e^{- \alpha - \beta \epsilon_i})^{- g_i}.
 		\end{equation}
 		
-		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		\noindent\hdashrule[0.5ex]{\linewidth}{0.5pt}{1mm} % horizontal dashed line
 		
 		对于 Fermi-Dirac statistics,
 		\begin{equation}
@@ -125,14 +132,21 @@
 			Z_\text{GC} = \prod_i (1 + e^{- \alpha - \beta \epsilon_i})^{g_i}.
 		\end{equation}
 		
-		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		\noindent\hdashrule[0.5ex]{\linewidth}{0.5pt}{1mm} % horizontal dashed line
 		
 		对于 Maxwell-Boltzmann statistics,
-		\begin{align}
-			Z_\text{GC} &= \prod_i \sum_{n_i = 0}^\infty \frac{g_i^{n_i}}{n_i!} (e^{- \alpha - \beta \epsilon_i})^{n_i} \notag \\
-			&= \prod_i \exp \Big( g_i e^{- \alpha - \beta \epsilon_i} \Big).
-		\end{align}
+		\begin{equation} \label{6.1.18}
+			Z_\text{GC} = \prod_i \sum_{n_i = 0}^\infty \frac{g_i^{n_i}}{n_i!} (e^{- \alpha - \beta \epsilon_i})^{n_i} = \prod_i \exp \Big( g_i e^{- \alpha - \beta \epsilon_i} \Big).
+		\end{equation}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		实际上, 用每个能量本征态 (而不是能级) 上的粒子数计算更方便, 只需要把 \eqref{6.1.12} \~{} \eqref{6.1.18} 中的 $g_i \mapsto 1$ 即可.
 	\end{tcolorbox}
+	
+	\begin{itemize}
+		\item 注意到这里没有用 $n_i, g_i \gg 1$ 的条件.
+	\end{itemize}
 	
 	\item 得到
 	\begin{equation}
@@ -140,7 +154,58 @@
 			\Phi_\text{G} = - k_B T \ln Z_\text{GC} \\
 			U = \sum_i \frac{g_i \epsilon_i}{e^{\alpha + \beta \epsilon_i} - \eta} \\
 			N = \sum_i \frac{g_i}{e^{\alpha + \beta \epsilon_i} - \eta} \\
+			\braket{n_i} = - \frac{1}{\beta} \frac{\partial}{\partial \epsilon_i} \ln Z_\text{GC} = \frac{g_i}{e^{\alpha + \beta \epsilon_i} - \eta} \\
 			S = k_B \Big( \beta U + \alpha N + \ln Z_\text{GC} \Big)
 		\end{dcases}.
 	\end{equation}
+\end{itemize}
+
+\section{statistics of the occupation numbers}
+\begin{itemize}
+	\item 能级 $\epsilon_i$ 上的粒子数为
+	\begin{equation}
+		\braket{n_i} = \frac{g_i}{e^{\beta (\epsilon_i - \mu)} - \eta},
+	\end{equation}
+	其函数图像如下:
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.6]{figures/plot of braket{n}.pdf}
+		\caption{plot of $\braket{n}$ with $g = 1$.}
+	\end{figure}
+	
+	\item $n_i$ 的方差为
+	\begin{equation} \label{6.2.2}
+		\frac{\braket{(\Delta n_i)^2}}{\braket{n_i}^2} = \frac{1}{\braket{n_i}} + \frac{\eta}{g_i}.
+	\end{equation}
+	
+	\begin{tcolorbox}[title=calculation:]
+		\begin{align}
+			\braket{(\Delta n_i)^2} = \braket{n_i^2} - \braket{n_i}^2 &= \frac{1}{Z_\text{GC}} \frac{1}{\beta^2} \frac{\partial^2}{\partial \epsilon_i^2} Z_\text{GC} - \frac{1}{\beta^2} \Big( \frac{\partial}{\partial \epsilon_i} \ln Z_\text{GC} \Big)^2 \notag \\
+			&= \frac{1}{\beta^2} \frac{\partial^2}{\partial \epsilon_i^2} \ln Z_\text{GC} = - \frac{1}{\beta} \frac{\partial}{\partial \epsilon_i} \braket{n_i} = \cdots
+		\end{align}
+	\end{tcolorbox}
+	
+	\item 更进一步, 根据 \eqref{6.1.10}, 能量本征态 (不是能级) 占有 $n_i$ 个粒子的概率是
+	\begin{equation}
+		p(n_i) = \begin{dcases}
+			\frac{\braket{n_i}^{n_i}}{(\braket{n_i} + 1)^{n_i + 1}} & \text{Bose-Einstein} \\
+			\begin{dcases}
+				\braket{n_i} & n_i = 1 \\
+				1 - \braket{n_i} & n_i = 0
+			\end{dcases} & \text{Fermi-Dirac} \\
+			\frac{\braket{n_i}^{n_i}}{n_i!} e^{- \braket{n_i}} & \text{Boltzmann}
+		\end{dcases}.
+	\end{equation}
+	
+	\begin{tcolorbox}[title=calculation:]
+		能级占有 $n_i$ 个粒子的概率是
+		\begin{equation}
+			p(n_i) = \begin{dcases}
+				\frac{\frac{(n_i + g_i - 1)!}{n_i! (g_i - 1)!} (e^{- \alpha - \beta \epsilon_i})^{n_i}}{(1 - e^{- \alpha - \beta \epsilon_i})^{- g_i}} = \frac{(n_i + g_i - 1)!}{n_i! (g_i - 1)!} \frac{g_i^{g_i} \braket{n_i}^{n_i}}{(\braket{n_i} + g_i)^{g_i + n_i}} & \text{Bose-Einstein} \\
+				\frac{\frac{g_i!}{n_i! (g_i - n_i)!} (e^{- \alpha - \beta \epsilon_i})^{n_i}}{(1 + e^{- \alpha - \beta \epsilon_i})^{g_i}} = \frac{g_i!}{n_i! (g_i - n_i)!} \frac{\braket{n_i}^{n_i} (g_i - \braket{n_i})^{g_i - n_i}}{g_i^{g_i}} & \text{Fermi-Dirac} \\
+				\frac{\frac{g_i^{n_i}}{n_i!} (e^{- \alpha - \beta \epsilon_i})^{n_i}}{\exp \big( g_i e^{- \alpha - \beta \epsilon_i} \big)} = \frac{\braket{n_i}^{n_i}}{n_i!} e^{- \braket{n_i}} & \text{Boltzmann}
+			\end{dcases}.
+		\end{equation}
+	\end{tcolorbox}
 \end{itemize}
