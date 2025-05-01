@@ -12,7 +12,7 @@
 	是单调递增函数, 且 $g_n(1) = \zeta(n)$.
 \end{itemize}
 
-\section{thermodynamics behavior of an ideal Bose gas}
+\section{thermodynamic behavior of an ideal Bose gas}
 \begin{itemize}
 	\item ideal Bose gas 的 grand partition function 为
 	\begin{equation} \label{7.1.1}
@@ -72,7 +72,7 @@
 		& a_4 = - \Big( \frac{3}{32} + \frac{5}{32 \sqrt{2}} - \frac{1}{2 \sqrt{6}} \Big) \approx - 0.00011.
 	\end{align}
 	
-	\item 注意到 $U = \frac{3}{2} P V$, 系统的 specific heat 为
+	\item 注意到 $U = \frac{3}{2} P V$ ($T < T_c$ 时也成立), 系统的 specific heat 为
 	\begin{equation}
 		\frac{C_V}{N k_B} = \begin{dcases}
 			\frac{3}{2} \sum_{l = 1}^\infty \frac{5 - 3 l}{2} a_l (n \lambda^3 / N_s)^{l - 1} & T \gg T_c \\
@@ -98,6 +98,15 @@
 	\end{figure}
 	
 	可见 $T = T_c$ 时存在相变.
+	
+	\item 系统的熵为
+	\begin{equation} \label{7.1.11}
+		S = U + P V - \mu N = \begin{dcases}
+			N k_B \Big( \frac{5}{2} \frac{g_{5 / 2}(z)}{g_{3 / 2}(z)} - \ln z \Big) & T > T_c \\
+			\frac{5}{2} k_B \frac{V}{\lambda^3 / N_s} \zeta({\textstyle \frac{5}{2}}) = \frac{5}{2} k_B N_e \frac{\zeta(\frac{5}{2})}{\zeta(\frac{3}{2})} & T < T_c
+		\end{dcases},
+	\end{equation}
+	可见 $S \propto N_e$, 处于基态的粒子不贡献熵, as expected.
 \end{itemize}
 
 \subsection{normal phase and condensed phase}
@@ -125,7 +134,7 @@
 	\begin{itemize}
 		\item 一个对化简有用的公式,
 		\begin{equation}
-			\frac{T}{T_c} = \Big( \frac{\zeta({\textstyle \frac{3}{2}})}{n \lambda^3 / N_s} \Big)^{\frac{2}{3}}.
+			\frac{T}{T_c} = \Big( \frac{\zeta(\frac{3}{2})}{n \lambda^3 / N_s} \Big)^{\frac{2}{3}}.
 		\end{equation}
 		
 		\item $T < T_c$ 时,
@@ -134,11 +143,48 @@
 		\end{equation}
 	\end{itemize}
 	
-	\item 综上, $z$ 随 $T$ 变化曲线如下图:
+	\item 综上, $z$ 随 $T$ 变化曲线如 figure \ref{figure 7.2 (a)}.
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.8]{figures/plot of T-z.pdf}
-		\caption{plot of $T$-$z$.}
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[scale=0.8]{figures/plot of T-z.pdf}
+			\caption{plot of $T$-$z$.}
+			\label{figure 7.2 (a)}
+		\end{subfigure}
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[scale=0.8]{figures/plot of an isotherm at T_0.pdf}
+			\caption{plot of an isotherm at $T_0$.}
+			\label{figure 7.2 (b)}
+		\end{subfigure}
+		\caption{}
 	\end{figure}
+\end{itemize}
+
+\subsection{isotherms and adiabats of the ideal Bose gas}
+\begin{itemize}
+	\item 等温线上, 相变发生在 characteristic volume,
+	\begin{equation}
+		v_c = \frac{\lambda^3}{N_s \zeta(\frac{3}{2})},
+	\end{equation}
+	因此, $v$-$P$ 曲线如 figure \ref{figure 7.2 (b)}, 其中 transition line 为
+	\begin{equation}
+		P v^{5 / 3} = \frac{h^2}{2 \pi m} \frac{1}{N_s^{2 / 3}} \frac{\zeta(\frac{5}{2})}{\zeta^{5 / 3}(\frac{3}{2})} \quad \text{or} \quad \frac{P v_c(T_0)}{k_B T_0} \Big( \frac{v}{v_c(T_0)} \Big)^{\frac{5}{3}} = \frac{\zeta(\frac{5}{2})}{\zeta(\frac{3}{2})}.
+	\end{equation}
+	
+	\item 可逆绝热过程中, 根据 \eqref{7.1.11},
+	\begin{align}
+		& \begin{dcases}
+			z = \text{Const.} \Longrightarrow n \lambda^3 = \text{Const.} & T > T_c \\
+			n \lambda^3 = \text{Const.} & T < T_c
+		\end{dcases} \notag \\
+		\Longrightarrow & n \lambda^3 = \text{Const.} \quad \text{or} \quad \frac{P}{T^{5 / 2}} = \text{Const.} \quad \text{or} \quad P v^{5 / 3} = \text{Const.},
+	\end{align}
+	与 ideal classical gas 中的情况完全一样, 但是
+	\begin{equation}
+		\gamma \equiv \frac{C_P}{C_V} = \frac{5}{3} \frac{g_{5 / 2}(z) g_{1 / 2}(z)}{g_{3 / 2}^2(z)},
+	\end{equation}
+	与 ideal classical gas 中不一样.
 \end{itemize}
