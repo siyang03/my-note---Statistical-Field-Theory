@@ -49,18 +49,18 @@
 
 \section{the partition function and the grand potential}
 \begin{itemize}
-	\item 定义 fugacity:
+	\item 定义 fugacity,
 	\begin{equation}
-		f := e^{\beta \mu}.
+		z := e^{\beta \mu}.
 	\end{equation}
 	
 	\item the partition function of the grand canonical ensemble 为
 	\begin{equation}
-		Z_\text{GC}(T, V, f) = \sum_{i, N} f^N e^{- \beta E_i} = \sum_{N = 1}^\infty f^N Z_\text{C}(E, V, N),
+		Z_\text{GC}(T, V, z) = \sum_{i, N} z^N e^{- \beta E_i} = \sum_{N = 1}^\infty z^N Z_\text{C}(E, V, N),
 	\end{equation}
 	and the grand potential is
 	\begin{equation}
-		\Phi_\text{G}(T, V, \mu) = - k_B T \ln Z_\text{GC}(T, V, f).
+		\Phi_\text{G}(T, V, \mu) = - k_B T \ln Z_\text{GC}(T, V, z).
 	\end{equation}
 \end{itemize}
 
@@ -70,7 +70,7 @@
 	\begin{equation}
 		\begin{dcases}
 			\braket{(\Delta N)^2} = \braket{N^2} - \braket{N}^2 = \frac{1}{\beta^2} \frac{\partial^2}{\partial \mu^2} \ln Z_\text{GC} = \frac{1}{\beta} \Big( \frac{\partial N}{\partial \mu} \Big)_{T, V} \\
-			\braket{(\Delta E)^2} = \frac{\partial^2}{\partial \beta^2} \ln Z_\text{GC} = - \Big( \frac{\partial U}{\partial \beta} \Big)_{V, f}
+			\braket{(\Delta E)^2} = \frac{\partial^2}{\partial \beta^2} \ln Z_\text{GC} = - \Big( \frac{\partial U}{\partial \beta} \Big)_{V, z}
 		\end{dcases},
 	\end{equation}
 	因此
@@ -108,9 +108,9 @@
 		
 		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
 		
-		代入 $f = e^{\beta \mu}$,
+		代入 $z = e^{\beta \mu}$,
 		\begin{equation}
-			\braket{(\Delta E)^2} = - \Big( \frac{\partial U}{\partial \beta} \Big)_{V, f} = k_B T^2 \Big( \frac{\partial U}{\partial T} \Big)_{V, \mu} + k_B T \mu \Big( \frac{\partial U}{\partial \mu} \Big)_{T, V},
+			\braket{(\Delta E)^2} = - \Big( \frac{\partial U}{\partial \beta} \Big)_{V, z} = k_B T^2 \Big( \frac{\partial U}{\partial T} \Big)_{V, \mu} + k_B T \mu \Big( \frac{\partial U}{\partial \mu} \Big)_{T, V},
 		\end{equation}
 		且
 		\begin{equation}
@@ -155,16 +155,16 @@
 	
 	\item 理想气体的 $Z_\text{GC}$ 为
 	\begin{equation}
-		Z_\text{GC}(T, V, f) = \sum_{N = 1}^\infty f^N \frac{(V \phi(T))^N}{N!} = \exp \Big( f V \phi(T) \Big),
+		Z_\text{GC}(T, V, z) = \sum_{N = 1}^\infty z^N \frac{(V \phi(T))^N}{N!} = e^{z V \phi(T)},
 	\end{equation}
 	因此
 	\begin{equation} \label{4.5.4}
 		\begin{dcases}
-			\Phi_G = - k_B T f V \phi(T) \\
-			U = k_B T^2 f V \phi'(T) \\
-			N = f V \phi(T) \\
+			\Phi_G = - k_B T z V \phi(T) \\
+			U = k_B T^2 z V \phi'(T) \\
+			N = z V \phi(T) \\
 			P = \frac{N k_B T}{V} \\
-			S = N k_B \Big( - \ln f + f \frac{V}{N} (T \phi'(T) + \phi(T)) \Big)
+			S = N k_B \Big( - \ln z + z \frac{V}{N} (T \phi'(T) + \phi(T)) \Big)
 		\end{dcases}.
 	\end{equation}
 \end{itemize}
@@ -183,12 +183,12 @@
 	
 	\item 系统 $Z_\text{GC}$ 为
 	\begin{equation}
-		Z_\text{GC} = \sum_{N = 1}^\infty f^N \phi^N(T) = \frac{1}{1 - f \phi(T)},
+		Z_\text{GC} = \sum_{N = 1}^\infty z^N \phi^N(T) = \frac{1}{1 - z \phi(T)},
 	\end{equation}
 	因此
 	\begin{equation} \label{4.5.7}
 		\begin{dcases}
-			N = \frac{f \phi(T)}{1 - f \phi(t)} \Longrightarrow f \phi(T) \simeq 1 - \frac{1}{N} \iff \beta \mu \simeq - \frac{1}{N} - \ln \phi(T) \\
+			N = \frac{z \phi(T)}{1 - z \phi(t)} \Longrightarrow z \phi(T) \simeq 1 - \frac{1}{N} \iff \beta \mu \simeq - \frac{1}{N} - \ln \phi(T) \\
 			U = N k_B T^2 \frac{\phi'(T)}{\phi(T)} \\
 			S = N k_B \Big( \ln \pi(T) + T \frac{\phi'(T)}{\phi(T)} + O({\textstyle \frac{\ln N}{N}}) \Big)
 		\end{dcases}.
@@ -201,7 +201,7 @@
 	
 	\item 固态和液态具有相同的 fugacity, 结合 \eqref{4.5.4} 和 \eqref{4.5.7},
 	\begin{equation}
-		\frac{N_\text{g}}{V_\text{g} \phi_\text{g}(T)} = f_\text{g} = f_\text{s} \simeq \frac{1}{\phi_\text{s}(T)} \Longrightarrow \frac{N_\text{g}}{V_\text{g}} = \frac{P_\text{vapor}}{k_B T} = \frac{\phi_\text{g}(T)}{\phi_\text{s}(T)},
+		\frac{N_\text{g}}{V_\text{g} \phi_\text{g}(T)} = z_\text{g} = z_\text{s} \simeq \frac{1}{\phi_\text{s}(T)} \Longrightarrow \frac{N_\text{g}}{V_\text{g}} = \frac{P_\text{vapor}}{k_B T} = \frac{\phi_\text{g}(T)}{\phi_\text{s}(T)},
 	\end{equation}
 	代入单原子气体的 $\phi_\text{g}(T)$ 和 Einstein model 的 $\phi_\text{s}(T)$, 得到
 	\begin{align}
