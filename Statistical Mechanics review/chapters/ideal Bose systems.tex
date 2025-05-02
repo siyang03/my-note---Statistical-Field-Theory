@@ -7,9 +7,9 @@
 	
 	\item $g_n(z)$ 是 Bose-Einstein function,
 	\begin{equation}
-		g_n(z) = z + \frac{z^2}{2^n} + \frac{z^3}{3^n} + \cdots, \quad g_n'(z) = \frac{1}{z} g_{n - 1}(z),
+		g_n(z) \equiv \frac{1}{\Gamma(n)} \int_0^\infty \frac{x^{n - 1}}{z^{- 1} e^x - 1} dx = z + \frac{z^2}{2^n} + \frac{z^3}{3^n} + \cdots, \quad \text{and} \quad g_n'(z) = \frac{1}{z} g_{n - 1}(z),
 	\end{equation}
-	是单调递增函数, 且 $g_n(1) = \zeta(n)$.
+	是单调递增函数, $- 1 < z < 1$, 且 $g_n(1) = \zeta(n)$.
 \end{itemize}
 
 \section{thermodynamic behavior of an ideal Bose gas} \label{7.1}
@@ -22,7 +22,7 @@
 	
 	\begin{tcolorbox}[title=calculation:]
 		注意到粒子能量 $\epsilon$ 的简并度为 (根据 \eqref{1.2.3})
-		\begin{equation}
+		\begin{equation} \label{7.1.2}
 			g(\epsilon) = N_s 2 \pi \frac{V / \lambda^3}{(\pi k_B T)^{3 / 2}} \epsilon^{1 / 2},
 		\end{equation}
 		所以 (另外 $g_0 = N_s \neq 0$, 而 $g(0) = 0$, 需要把 $\epsilon = 0$ 单独拿出来)
@@ -69,7 +69,7 @@
 	($T \gg T_c$ 指要求级数收敛), 其中 virial coefficients are
 	\begin{align}
 		& a_1 = 1, \quad a_2 = - \frac{1}{4 \sqrt{2}} \approx - 0.177, \quad a_3 = - \Big( \frac{2}{9 \sqrt{3}} - \frac{1}{8} \Big) \approx - 0.0033, \notag \\
-		& a_4 = - \Big( \frac{3}{32} + \frac{5}{32 \sqrt{2}} - \frac{1}{2 \sqrt{6}} \Big) \approx - 0.00011.
+		& a_4 = - \Big( \frac{3}{32} + \frac{5}{32 \sqrt{2}} - \frac{1}{2 \sqrt{6}} \Big) \approx - 0.00011. \label{7.1.9}
 	\end{align}
 	
 	\item 注意到 $U = \frac{3}{2} P V$ ($T < T_c$ 时也成立), 系统的 specific heat 为

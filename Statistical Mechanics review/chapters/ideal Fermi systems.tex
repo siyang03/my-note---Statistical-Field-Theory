@@ -1,5 +1,53 @@
 \chapter{ideal Fermi systems}
+\begin{itemize}
+	\item $f_n(z)$ 是 Fermi-Dirac function,
+	\begin{equation}
+		f_n(z) \equiv \frac{1}{\Gamma(n)} \int_0^\infty \frac{x^{n - 1}}{z^{- 1} e^x + 1} dx = z - \frac{z^2}{2^n} + \frac{z^3}{3^n} - \cdots, \quad \text{and} \quad f_n'(z) = \frac{1}{z} f_{n - 1}(z),
+	\end{equation}
+	是单调递增函数 (当 $n > 0$), $- 1 < z < 1$, 且 $f_n(1) = (1 - 2^{1 - n}) \zeta(n)$.
+	\begin{itemize}
+		\item 与 Bose-Einstein statistics 不同, $f_n(z)$ 在 $z = 1$ 没有极点, 只是它的级数展开在 $z > 1$ 发散 (因为 $z = - 1$ 处有极点).
+		
+		\item $g_n(z) = - f_n(- z) = \mathrm{Li}_n(z)$, 称为 \href{https://en.wikipedia.org/wiki/Polylogarithm}{Polylogarithms}.
+	\end{itemize}
+\end{itemize}
+
 \section{thermodynamic behavior of an ideal Fermi gas}
 \begin{itemize}
-	\item 
+	\item ideal Fermi gas 的 grand partition function 为
+	\begin{equation}
+		\frac{P V}{k_B T} = \ln Z_\text{GC} = N_s \Big( \frac{V}{\lambda^3} f_{5 / 2}(z) + \underbrace{\ln(1 + z)}_{\text{negligible}} \Big),
+	\end{equation}
+	对 $\mu$ 的取值范围没有限制.
+	
+	\begin{tcolorbox}[title=calculation:]
+		粒子能量的简并度见 \eqref{7.1.2}, 所以...
+		
+		且
+		\begin{equation}
+			N_0 = \frac{N_s}{z^{- 1} + 1} < N_s \Longrightarrow \ln(1 + z) = - \ln(1 - N_0 / N_s) \sim N_0 / N_s \ll N.
+		\end{equation}
+	\end{tcolorbox}
+	
+	\item 得到
+	\begin{equation}
+		\begin{dcases}
+			N = N_s \frac{V}{\lambda^3} f_{3 / 2}(z) \\
+			U = \frac{3}{2} N_s k_B T \frac{V}{\lambda^3} f_{5 / 2}(z) \\
+			S = N k_B \Big( \frac{5}{2} \frac{f_{5 / 2}(z)}{f_{3 / 2}(z)} - \ln z \Big) \\
+			\frac{C_V}{N k_B} = \frac{15}{4} \frac{f_{5 / 2}(z)}{f_{3 / 2}(z)} - \frac{9}{4} \frac{f_{3 / 2}(z)}{f_{1 / 2}(z)}
+		\end{dcases},
+	\end{equation}
+	注意到 $U = \frac{3}{2} P V$ 依然成立.
+	
+	\item 经典极限 $n \lambda^3 \ll 1$ 对应 $z \ll 1$, 此时 $f_n(z) \simeq z$, 代入可以得到理想气体的各热力学量.
+	
+	\item 对 equation of state 作 virial expansion,
+	\begin{equation}
+		\begin{dcases}
+			\frac{P V}{N k_B T} = \sum_{l = 1}^\infty (- 1)^{l - 1} a_l (n \lambda^3 / N_s)^{l - 1} \\
+			\frac{C_V}{N k_B} = \frac{3}{2} \sum_{l = 1}^\infty (- 1)^{l - 1} \frac{5 - 3 l}{2} a_l (n \lambda^3 / N_s)^{l - 1}
+		\end{dcases},
+	\end{equation}
+	其中系数 $a_l$ 见 \eqref{7.1.9}.
 \end{itemize}
