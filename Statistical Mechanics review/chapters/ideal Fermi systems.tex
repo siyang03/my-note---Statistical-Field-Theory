@@ -186,11 +186,77 @@
 
 \subsection{Landau diamagnetism}
 \begin{itemize}
-	\item Landau 考虑了电子在磁场中的运动, 但忽略自旋, 电子的能级为
+	\item Landau 考虑了电子在磁场 $\vec{B} = B \hat{e}_z, \vec{A} = \frac{1}{2} \big( - B y \hat{e}_x + B x \hat{e}_y \big)$ 中的运动, 但忽略自旋, 电子的 Hamiltonian 为
 	\begin{equation}
-		\epsilon = \frac{e \hbar B}{m} \Big( j + \frac{1}{2} \Big) + \frac{p_z^2}{2 m},
+		H = \frac{1}{2 m} \Big( \vec{p} + e \vec{A} \Big)^2 = \frac{|\vec{p}|^2}{2 m} + \frac{e B}{2 m} \hat{L}_z,
 	\end{equation}
-	那么, 电子的能级简并度和系统的 grand partition function 为
+	因此, 电子的能级为
+	\begin{equation}
+		\epsilon = \frac{\hbar^2}{2 m} \Big( \frac{\pi}{2 R_0} \Big)^2 \Big( n + \frac{1}{2} \Big)^2 + \frac{e \hbar B}{2 m} (n + n') + \frac{p_z^2}{2 m},
+	\end{equation}
+	其中 $n \gg 1, n' \in \mathbb{N}$.
+	
+	\begin{tcolorbox}[title=calculation:]
+		使用 cylindrical coordinates,
+		\begin{equation}
+			\begin{dcases}
+				r = \sqrt{x^2 + y^2} \\
+				\tan \phi = \frac{y}{x} \\
+				z = z
+			\end{dcases} \Longrightarrow \begin{dcases}
+				\nabla^2 = \frac{\partial^2}{\partial r^2} + \frac{1}{r} \frac{\partial}{\partial r} + \frac{1}{r^2} \frac{\partial^2}{\partial \phi^2} + \frac{\partial^2}{\partial z^2} \\
+				\hat{L}_z = - i \hbar \frac{\partial}{\partial \phi}
+			\end{dcases},
+		\end{equation}
+		因此, 本征值方程为
+		\begin{equation}
+			\Big( - \frac{\hbar^2}{2 m} \Big( \frac{\partial^2}{\partial r^2} + \frac{1}{r} \frac{\partial}{\partial r} + \frac{1}{r^2} \frac{\partial^2}{\partial \phi^2} + \frac{\partial^2}{\partial z^2} \Big) - i \frac{e \hbar B}{2 m} \frac{\partial}{\partial \phi} - \epsilon \Big) \psi(r, \phi, z) = 0,
+		\end{equation}
+		分离变量
+		\begin{equation}
+			\psi(r, \phi, z) = e^{i p_z z / \hbar} e^{i j \phi} R_{j, p_z}(r) \Longrightarrow r^2 R'' + r R' - (j^2 - \kappa_j^2 r^2) R = 0,
+		\end{equation}
+		其中 $\frac{\hbar^2 \kappa_j^2}{2 m} = \epsilon - \frac{e \hbar B}{2 m} j - \frac{p_z^2}{2 m}, j \in \mathbb{N}$, 令 $\rho = \kappa_j r$, 那么
+		\begin{equation}
+			\rho^2 R'' + \rho R' + (\rho^2 - j^2) R = 0,
+		\end{equation}
+		得到
+		\begin{equation}
+			R_j(\rho) = a J_j(\rho) + b Y_j(\rho),
+		\end{equation}
+		which are the \href{https://en.wikipedia.org/wiki/Bessel_function}{Bessel functions}. 注意到, 虽然
+		\begin{equation}
+			J_{- j}(\rho) = (- 1)^j J_j(\rho), \quad Y_{- j}(\rho) = (- 1)^j Y_j(\rho),
+		\end{equation}
+		但 $e^{\pm i j \phi}$ 分别对应不同的态. 在 $\rho \gg 1$ 时, 其渐近形式为
+		\begin{equation}
+			\begin{dcases}
+				J_j(\rho) \simeq \sqrt{\frac{2}{\pi \rho}} \cos \Big( \rho - \frac{j \pi}{2} - \frac{\pi}{4} \Big) \\
+				Y_j(\rho) \simeq \sqrt{\frac{2}{\pi \rho}} \sin \Big( \rho - \frac{j \pi}{2} - \frac{\pi}{4} \Big)
+			\end{dcases},
+		\end{equation}
+		边界条件设置为 $r = R_0$, 令 $\kappa_j R_0 = \rho_0 \gg 1$, 那么
+		\begin{equation}
+			\begin{dcases}
+				R_j(\rho) = J_j(\rho) & j = \underbrace{\frac{1}{2} + \frac{2 \rho_0}{\pi}}_{= n} + 2 n_J \\
+				R_j(\rho) = Y_j(\rho) & j = \underbrace{- \frac{1}{2} + \frac{2 \rho_0}{\pi}}_{= n - 1} + 2 n_Y
+			\end{dcases},
+		\end{equation}
+		注意到 $j \in \mathbb{N}$, 因此
+		\begin{equation}
+			\kappa_j R_0 = \rho_0 = \frac{\pi}{2} \Big( n + \frac{1}{2} \Big) \gg 1,
+		\end{equation}
+		得到系统的能级
+		\begin{equation}
+			\epsilon = \frac{\hbar^2}{2 m} \Big( \frac{\pi}{2 R_0} \Big)^2 \Big( n + \frac{1}{2} \Big)^2 + \frac{e \hbar B}{2 m} \underbrace{(n + n')}_{= j} + \frac{p_z^2}{2 m}, \quad n' = \begin{dcases}
+				2 n_J \\
+				2 n_Y - 1
+			\end{dcases},
+		\end{equation}
+		因此每个 $(n, n', p_z)$ 对应电子的一个能量本征态.
+	\end{tcolorbox}
+	
+	\item 那么, 电子的能级简并度和系统的 grand partition function 为
 	\begin{equation}
 		\begin{dcases}
 			g(\epsilon) = 64 \pi V \frac{m^{5 / 2}}{e h^4 B} \epsilon^{1 / 2} \\
@@ -202,8 +268,8 @@
 		注意 $\frac{p_z^2}{2 m} = \frac{h^2}{8 m L^2} n_z^2$,
 		\begin{align}
 			\frac{1}{2} g(\epsilon) &= \int_0^\infty dj \int_0^\infty dn_z \, \delta(\epsilon - \epsilon(j, n_z)) = \int_0^\infty dj \, \frac{1}{\frac{h^2}{4 m L^2} n_z} \Big|_{\epsilon, j} \theta(\epsilon - \epsilon(j, 0)) \notag \\
-			&= \Big( \frac{4 m L^2}{h^2} \Big)^{3 / 2} \sqrt{\frac{m}{e \hbar B}} \int_0^{\frac{m}{e \hbar B} \epsilon - \frac{1}{2}} \frac{dj}{\sqrt{\big( \frac{m}{e \hbar B} \epsilon - \frac{1}{2} \big) - j}} \notag \\
-			&= 2 V \Big( \frac{4 m}{h^2} \Big)^{3 / 2} \sqrt{\frac{m}{e \hbar B} \Big( \frac{m}{e \hbar B} \epsilon - \frac{1}{2} \Big)} \simeq \cdots,
+			&= \frac{1}{2} \Big( \frac{8 m L^2}{h^2} \Big)^{1 / 2} \sqrt{\frac{m}{e \hbar B}} \int_0^{\frac{m}{e \hbar B} \epsilon - \frac{1}{2}} \frac{dj}{\sqrt{\big( \frac{m}{e \hbar B} \epsilon - \frac{1}{2} \big) - j}} \notag \\
+			&= \Big( \frac{8 m L^2}{h^2} \Big)^{1 / 2} \sqrt{\frac{m}{e \hbar B}} \sqrt{\frac{m}{e \hbar B} \epsilon - \frac{1}{2}} \simeq \cdots,
 		\end{align}
 		因此, 系统的 grand partition function 为
 		\begin{align}
