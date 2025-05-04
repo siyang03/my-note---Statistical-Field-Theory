@@ -154,7 +154,7 @@
 	
 	\begin{itemize}
 		\item 对比高温极限 \eqref{3.7.18} ($g = 2, j = \frac{1}{2}$),
-		\begin{equation}
+		\begin{equation} \label{8.2.7}
 			\chi_\infty = \frac{N}{V} \frac{\mu_0 \mu_B^2}{k_B T}.
 		\end{equation}
 	\end{itemize}
@@ -186,7 +186,63 @@
 
 \subsection{Landau diamagnetism}
 \begin{itemize}
-	\item 
+	\item 单个电子的 Hamiltonian, 及其能级和能级简并度 $g(\epsilon)$ 见 appendix \ref{A}.
+	
+	\item 系统的 grand partition function 为
+	\begin{equation}
+		\ln Z_\text{GC} = V \frac{B e}{h^2} \sqrt{2 \pi m k_B T} \sum_{j = 0}^\infty f_{3 / 2}(z e^{- \beta 2 \hbar \omega_L (j + \frac{1}{2})}).
+	\end{equation}
+	
+	\begin{tcolorbox}[title=calculation:]
+		\begin{align}
+			\ln Z_\text{GC} &= L_x L_y \frac{B e}{h} \sum_{j, n_z = 0}^\infty \ln \Big( 1 + z e^{- \beta (2 \hbar \omega_L (j + \frac{1}{2}) + \frac{h^2}{8 m L_z^2} n_z^2)} \Big) \notag \\
+			&\simeq L_x L_y \frac{B e}{h} \sum_{j = 0}^\infty \int_{- \infty}^\infty \frac{L_z dp_z}{h} \ln \Big( 1 + z e^{- \beta (2 \hbar \omega_L (j + \frac{1}{2}) + \frac{p_z^2}{2 m})} \Big) \notag \\
+			&= V \frac{B e}{h^2} \sqrt{2 m k_B T} \sum_{j = 0}^\infty \int_0^\infty \ln \Big( 1 + z e^{- \beta 2 \hbar \omega_L (j + \frac{1}{2})} e^{- x} \Big) x^{- 1 / 2} dx,
+		\end{align}
+		令 $z_j = z e^{- \beta 2 \hbar \omega_L (j + \frac{1}{2})}$, 积分部分为
+		\begin{equation}
+			I(z_j) = 2 \int_0^\infty \frac{x^{1 / 2}}{z_j^{- 1} e^{x} + 1} dx = \sqrt{\pi} f_{3 / 2}(z_j).
+		\end{equation}
+	\end{tcolorbox}
+\end{itemize}
+
+\subsubsection{at high temperature}
+\begin{itemize}
+	\item 高温极限下 $z \ll 1$, 系统的 partition function 化为
+	\begin{equation}
+		\ln Z_\text{ZG} \simeq V \frac{B e}{h^2} \sqrt{2 \pi m k_B T} \sum_{j = 0}^\infty z e^{- \beta 2 \hbar \omega_L (j + \frac{1}{2})} = V \frac{B e}{h^2} \sqrt{2 \pi m k_B T} z \Big( 2 \sinh \beta \hbar \omega_L \Big)^{- 1}.
+	\end{equation}
+	
+	\item 得到
+	\begin{equation}
+		\begin{dcases}
+			N = \frac{z V}{\lambda^3} \frac{x}{\sinh x} \\
+			V M = - \frac{\partial U}{\partial B} = \frac{1}{\beta} \frac{\partial}{\partial B} \ln Z_\text{GC}(T, V, z) = - N \mu_\text{eff} \Big( \coth x - \frac{1}{x} \Big)
+		\end{dcases},
+	\end{equation}
+	其中 $x = \beta \hbar \omega_L = \beta \mu_\text{eff} B$,
+	\begin{equation}
+		\mu_\text{eff} = \frac{e \hbar}{2 m}.
+	\end{equation}
+	\begin{itemize}
+		\item 结果类似于 Langevin paramagnetism, 见 section \ref{3.7}, 但负号是 quantization 的结果.
+	\end{itemize}
+	
+	\item 注意到 $\mu_\text{eff} B \ll k_B T \Longrightarrow B \approx \mu_0 H$, 得到
+	\begin{equation}
+		\chi_\infty \simeq - \frac{N}{V} \frac{\mu_0 \mu_\text{eff}^2}{3 k_B T},
+	\end{equation}
+	结合 \eqref{8.2.7}, 高温下 electron gas 的 susceptibility 为
+	\begin{equation}
+		\boxed{\chi_\infty = \frac{N}{V} \frac{\mu_0}{k_B T} \Big( \mu_B^2 - \frac{1}{3} \Big( \frac{e \hbar}{2 m} \Big)^2 \Big)}.
+	\end{equation}
+\end{itemize}
+
+\subsubsection{at all temperature with weak magnetic field}
+\begin{itemize}
+	\item 不再要求 $z$ 是小量, 但依然有 $\mu_0 \mu_\text{eff} H \approx \mu_\text{eff} B \ll k_B T$.
+	
+	\item ...
 \end{itemize}
 
 \section{the electron gas in metals}

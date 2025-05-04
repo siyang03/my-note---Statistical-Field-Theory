@@ -152,8 +152,9 @@
 \begin{itemize}
 	\item 电子能级的简并度为
 	\begin{equation}
-		g(\epsilon) = 
+		g(\epsilon) \simeq 2 \pi V \frac{(2 m)^{3 / 2}}{h^3} \epsilon^{1 / 2},
 	\end{equation}
+	但是, 要注意直接拿 $\epsilon \gg 2 \hbar \omega_L$ 计算 partition function, 等价于 $B \rightarrow 0$ (duh).
 	
 	\begin{tcolorbox}[title=caculation:]
 		注意到 $\frac{p_z^2}{2 m} = \frac{h^2}{8 m L_z^2} n_z^2$, (其中 $L_z$ 是 $z$ 方向的长度, 不要与角动量算符 $\hat{L}_z$ 混淆)
@@ -162,19 +163,37 @@
 			&= \frac{1}{2} \sqrt{\frac{8 m L_z^2}{h^2}} \int_0^\infty dn_r \int_{- \infty}^\infty dl \, \frac{1}{\sqrt{\epsilon - \epsilon(n_r, l, 0)}} \theta(\epsilon - \epsilon(n_r, l, 0)) \notag \\
 			&= \frac{1}{2} \sqrt{\frac{8 m L_z^2}{h^2}} \frac{1}{\sqrt{2 \hbar \omega_L}} \int_0^\infty dn_r \int_{- \infty}^{\frac{\epsilon}{2 \hbar \omega_L} - (n_r + \frac{1}{2})} dl \, \frac{1}{\sqrt{\frac{\epsilon}{2 \hbar \omega_L} - \big( n_r + \frac{1}{2} \big) - \frac{l + |l|}{2}}} \notag \\
 			&= L_z \sqrt{\frac{m}{\hbar^3 \omega_L}} \int_0^\infty dn_r \, \Bigg( \frac{l_\text{max}}{\sqrt{\frac{\epsilon}{2 \hbar \omega_L} - \big( n_r + \frac{1}{2} \big)}} + 2 \sqrt{\frac{\epsilon}{2 \hbar \omega_L} - \big( n_r + \frac{1}{2} \big)} \Bigg) \theta(\epsilon - \epsilon(n_r, 0, 0)) \notag \\
-			&= L_z \sqrt{\frac{m}{\hbar^3 \omega_L}} \Big( 2 l_\text{max} \sqrt{\frac{\epsilon}{2 \hbar \omega_L} - \frac{1}{2}} + \frac{4}{3} \Big( \frac{\epsilon}{2 \hbar \omega_L} - \frac{1}{2} \Big)^{\frac{3}{2}} \Big),
+			&= L_z \sqrt{\frac{2 \pi m}{h^3 \omega_L}} \Big( 2 l_\text{max} \sqrt{\frac{\epsilon}{2 \hbar \omega_L} - \frac{1}{2}} + \frac{4}{3} \Big( \frac{\epsilon}{2 \hbar \omega_L} - \frac{1}{2} \Big)^{\frac{3}{2}} \Big),
 		\end{align}
-		对于
+		用经典力学估算 $l_\text{max}$, (注意 $\vec{p} = m \vec{v} - e \vec{A}$),
+		\begin{equation}
+			\hbar l_\text{max} = m \omega_L R_\text{max}^2 \Longrightarrow l_\text{max} = \frac{e B}{h} S_{x y},
+		\end{equation}
+		其中 $S_{x y} = \pi R_\text{max}^2$, 对于
 		\begin{equation}
 			l_\text{max} \gg \frac{\epsilon}{2 \hbar \omega_L} \gg 1,
 		\end{equation}
 		近似有
 		\begin{equation}
-			g(\epsilon) \simeq \frac{\sqrt{2 m}}{\hbar^2 \omega_L} L_z l_\text{max} \epsilon^{1 / 2}.
+			g(\epsilon) \simeq 2 \pi l_\text{max} L_z \frac{\sqrt{2 m}}{h^2 \omega_L} \epsilon^{1 / 2} = 2 \pi V \frac{(2 m)^{3 / 2}}{h^3} \epsilon^{1 / 2}.
 		\end{equation}
 		
 		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
 		
+		ladder operator 的方法与 Pathria 的方法一样,
+		\begin{equation}
+			\max(n_b) = l_\text{max} = L_x L_y \frac{e B}{h},
+		\end{equation}
+		结果一致.
 		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		按照 Pathria 的讲法, $\epsilon = 2 \hbar \omega_L \big( j + \frac{1}{2} \big) + \frac{p_z^2}{2 m}, j \in \mathbb{Z}_{\geq 0}$, 那么,
+		\begin{align}
+			\frac{g(\epsilon)}{L_x L_y \frac{e B}{h}} &= \int_0^\infty dj \int_0^\infty dn_z \, \delta(\epsilon - \epsilon(j, n_z)) \notag \\
+			&= \frac{1}{2} \sqrt{\frac{8 m L_z^2}{h^2}} \int_0^\infty dj \, \frac{1}{\sqrt{\epsilon - \epsilon(j, 0)}} \theta(\epsilon - \epsilon(j, 0)) \notag \\
+			&= \frac{1}{2} \sqrt{\frac{8 m L_z^2}{h^2}} \frac{1}{\sqrt{2 \hbar \omega_L}} \int_0^{\frac{\epsilon}{2 \hbar \omega_L} - \frac{1}{2}} dj \, \frac{1}{\sqrt{\frac{\epsilon}{2 \hbar \omega_L} - \frac{1}{2} - j}} \notag \\
+			&= L_z \sqrt{\frac{2 \pi m}{h^3 \omega_L}} 2 \sqrt{\frac{\epsilon}{2 \hbar \omega_L} - \frac{1}{2}} \simeq 2 \pi L_z \frac{\sqrt{2 m}}{h^2 \omega_L} \epsilon^{1 / 2}.
+		\end{align}
 	\end{tcolorbox}
 \end{itemize}
