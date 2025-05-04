@@ -122,9 +122,13 @@
 	\part{phase transition}
 	
 	\appendix
-	
 	% Add the appendix to the table of contents and bookmarks
-	%\part*{Appendices}
-	%\addcontentsline{toc}{part}{Appendices}
+	\part*{Appendices}
+	\addcontentsline{toc}{part}{Appendices}
+	% --- Appendices get "Appendix <letter> <title>" ---
+	\renewcommand{\chaptermark}[1]{%
+		\markboth{Appendix \thechapter\ #1}{}%
+	}
 	
+	\import{chapters/}{Landau levels}
 \end{document}
