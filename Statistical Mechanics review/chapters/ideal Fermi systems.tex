@@ -71,7 +71,7 @@
 		\end{dcases},
 	\end{equation}
 	其中 $\mu_0 \equiv \epsilon_F \equiv \frac{p_F^2}{2 m}$ 称为 Fermi energy, $p_F$ 称为 Fermi momentum, $k_B T_F \equiv \epsilon_F$ 称为 Fermi temperature,
-	\begin{equation}
+	\begin{equation} \label{8.1.7}
 		\epsilon_F \equiv k_B T_F = \Big( 6 \pi^2 n / N_s \Big)^{\frac{2}{3}} \frac{\hbar^2}{2 m}, \quad p_F = \Big( 6 \pi^2 n / N_s \Big)^{\frac{1}{3}} \hbar.
 	\end{equation}
 	
@@ -108,6 +108,7 @@
 		\centering
 		\includegraphics[scale=0.8]{figures/specific heat of an ideal Fermi gas.pdf}
 		\caption{specific heat of an ideal Fermi gas.}
+		\label{figure 8.2}
 	\end{figure}
 \end{itemize}
 
@@ -148,14 +149,14 @@
 	\end{align}
 	系统的 low-field magnetic susceptibility is
 	\begin{equation}
-		\chi_0 = \lim_{H \rightarrow 0} \frac{M_z}{H} = 4 \pi \mu_0 \mu_B^2 \Big( \frac{2 m}{h^2} \Big)^{\frac{3}{2}} \epsilon_F^{1 / 2} = \frac{3}{2} \frac{N}{V} \frac{\mu_0 \mu_B^2}{\epsilon_F}, \quad \epsilon_F(n, H = 0) = \frac{h^2}{2 m} \Big( \frac{3 N}{8 \pi V} \Big)^{\frac{2}{3}},
+		\chi_0 = \lim_{H \rightarrow 0} \frac{M_z}{H} = 4 \pi \mu_0 \mu_B^2 \Big( \frac{2 m}{h^2} \Big)^{\frac{3}{2}} \epsilon_F^{1 / 2} = \boxed{\frac{3}{2} \frac{N}{V} \frac{\mu_0 \mu_B^2}{\epsilon_F}}, \quad \epsilon_F(n, H = 0) = \frac{h^2}{2 m} \Big( \frac{3 N}{8 \pi V} \Big)^{\frac{2}{3}},
 	\end{equation}
 	其中, 用 \eqref{8.2.4} 得到 $\epsilon_F$ 的表达式, 下标 $0$ 表示 $T \rightarrow 0$ (again, highly degenerate).
 	
 	\begin{itemize}
 		\item 对比高温极限 \eqref{3.7.18} ($g = 2, j = \frac{1}{2}$),
 		\begin{equation} \label{8.2.7}
-			\chi_\infty = \frac{N}{V} \frac{\mu_0 \mu_B^2}{k_B T}.
+			\boxed{\chi_\infty = \frac{N}{V} \frac{\mu_0 \mu_B^2}{k_B T}}.
 		\end{equation}
 	\end{itemize}
 	
@@ -189,9 +190,11 @@
 	\item 单个电子的 Hamiltonian, 及其能级和能级简并度 $g(\epsilon)$ 见 appendix \ref{A}.
 	
 	\item 系统的 grand partition function 为
-	\begin{equation}
-		\ln Z_\text{GC} = V \frac{B e}{h^2} \sqrt{2 \pi m k_B T} \sum_{j = 0}^\infty f_{3 / 2}(z e^{- \beta 2 \hbar \omega_L (j + \frac{1}{2})}).
-	\end{equation}
+	\begin{align}
+		\ln Z_\text{GC} &= V \frac{B e}{h^2} \sqrt{2 \pi m k_B T} \sum_{j = 0}^\infty f_{3 / 2}(z e^{- \beta 2 \hbar \omega_L (j + \frac{1}{2})}) \notag \\
+		&= \frac{V}{\lambda^3} \sum_{n = 1}^\infty (- 1)^{n + 1} \frac{z^n}{n^{3 / 2}} \frac{x}{\sinh n x},
+	\end{align}
+	其中 $x = \beta \hbar \omega_L = \beta \mu_\text{eff} B$.
 	
 	\begin{tcolorbox}[title=calculation:]
 		\begin{align}
@@ -204,6 +207,12 @@
 			I(z_j) = 2 \int_0^\infty \frac{x^{1 / 2}}{z_j^{- 1} e^{x} + 1} dx = \sqrt{\pi} f_{3 / 2}(z_j).
 		\end{equation}
 	\end{tcolorbox}
+	
+	\item 注意, $B \rightarrow 0$ 时, $\frac{x}{\sinh n x} \rightarrow \frac{1}{n}$, 代入,
+	\begin{equation}
+		\ln Z_\text{GC} \rightarrow \frac{V}{\lambda^3} f_{5 / 2}(z),
+	\end{equation}
+	符合预期.
 \end{itemize}
 
 \subsubsection{at high temperature}
@@ -230,11 +239,11 @@
 	
 	\item 注意到 $\mu_\text{eff} B \ll k_B T \Longrightarrow B \approx \mu_0 H$, 得到
 	\begin{equation}
-		\chi_\infty \simeq - \frac{N}{V} \frac{\mu_0 \mu_\text{eff}^2}{3 k_B T},
+		\boxed{\chi_\infty \simeq - \frac{N}{V} \frac{\mu_0 \mu_\text{eff}^2}{3 k_B T}},
 	\end{equation}
 	结合 \eqref{8.2.7}, 高温下 electron gas 的 susceptibility 为
 	\begin{equation}
-		\boxed{\chi_\infty = \frac{N}{V} \frac{\mu_0}{k_B T} \Big( \mu_B^2 - \frac{1}{3} \Big( \frac{e \hbar}{2 m} \Big)^2 \Big)}.
+		\chi_\infty = \frac{N}{V} \frac{\mu_0}{k_B T} \Big( \mu_B^2 - \frac{1}{3} \Big( \frac{e \hbar}{2 m} \Big)^2 \Big).
 	\end{equation}
 \end{itemize}
 
@@ -242,11 +251,51 @@
 \begin{itemize}
 	\item 不再要求 $z$ 是小量, 但依然有 $\mu_0 \mu_\text{eff} H \approx \mu_\text{eff} B \ll k_B T$.
 	
-	\item ...
+	\item 有
+	\begin{align}
+		V M &= \frac{1}{\beta} \frac{\partial}{\partial B} \ln Z_\text{GC} \notag \\
+		&= \frac{1}{\beta} \frac{V}{\lambda^3} \sum_{n = 1}^\infty (- 1)^{n + 1} \frac{z^n}{n^{3 / 2}} \beta \mu_\text{eff} \frac{\partial}{\partial x} \frac{x}{\sinh n x} \notag \\
+		&= \frac{V}{\lambda^3} \mu_\text{eff} \sum_{n = 1}^\infty (- 1)^{n + 1} \frac{z^n}{n^{3 / 2}} \Big( 1 - \frac{n x}{\tanh n x} \Big) \frac{1}{\sinh n x}, \\
+		N &= z \frac{\partial}{\partial z} \ln Z_\text{GC} = \frac{V}{\lambda^3} \sum_{n = 1}^\infty (- 1)^{n + 1} \frac{z^n}{n^{1 / 2}} \frac{x}{\sinh n x} \overset{x \rightarrow 0}{=} \frac{V}{\lambda^3} f_{3 / 2}(z),
+	\end{align}
+	那么
+	\begin{align}
+		\chi &\approx \beta \mu_0 \mu_\text{eff} \lim_{x \rightarrow 0} \frac{M}{x} \notag \\
+		&= \frac{1}{\lambda^3} \frac{\mu_0 \mu_\text{eff}^2}{k_B T} \lim_{x \rightarrow 0} \sum_{n = 1}^\infty (- 1)^{n + 1} \frac{z^n}{n^{3 / 2}} \underbrace{\frac{1}{x} \Big( 1 - \frac{n x}{\tanh n x} \Big) \frac{1}{\sinh n x}}_{\rightarrow - \frac{n}{3}} \notag \\
+		&= - \frac{1}{3} \frac{1}{\lambda^3} \frac{\mu_0 \mu_\text{eff}^2}{k_B T} f_{1 / 2}(z).
+	\end{align}
+	
+	\item 低温 ($T \ll T_F$) 情况下,
+	\begin{equation}
+		\begin{dcases}
+			f_{1 / 2} \simeq \frac{2}{\sqrt{\pi}} (\ln z)^{1 / 2} \\
+			f_{3 / 2} \simeq \frac{4}{3 \sqrt{\pi}} (\ln z)^{3 / 2} \\
+			\epsilon_F \simeq k_B T \ln z
+		\end{dcases} \Longrightarrow \boxed{\chi_0 = - \frac{1}{2} \frac{N}{V} \frac{\mu_0 \mu_\text{eff}^2}{\epsilon_F}}.
+	\end{equation}
 \end{itemize}
 
 \section{the electron gas in metals}
+\begin{itemize}
+	\item 用 Maxwell-Boltzmann statistics 描述 electron gas 的理论称为 Drude-Lorentz model, 用 Fermi-Dirac statistics 的理论由 Sommerfeld 提出, 称为 free electron model.
+	
+	\item 以 Na 为例,
+	\begin{equation}
+		(\epsilon_F)_\text{Na} = \Big( 3 \pi^2 \frac{n_a n_e}{a^3} \Big)^{\frac{2}{3}} \frac{\hbar^2}{2 m} = 3.14 \, \text{eV}, \quad (T_F)_\text{Na} = 3.64 \times 10^4 \, \text{K},
+	\end{equation}
+	其中 $n_a$ 一个 unit cell 中的原子数, $n_e$ 是每个 Na 原子的 conduction electron 数, $a$ 是 lattice constant, $m = 0.98 m_e$ 是电子的 effective mass.
+	
+	\item 因此, the conduction electrons in sodium constitute a highly degenerate Fermi system.
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item 金属的 specific heat 分别来自 lattice vibration (见 figure \ref{figure 7.3}) 和 electron gas (见 figure \ref{figure 8.2}).
+	\begin{itemize}
+		\item 极低温, 电子主导 ($\propto T / T_F$); 常温, 晶格振动主导; 高温, 两者都有.
+	\end{itemize}
+\end{itemize}
 
-\section{ultracold atomic Fermi gases}
-
-\section{statistical equilibrium of white dwarf stars}
+\section{white dwarf stars and the Chandrasekhar limit}
+\begin{itemize}
+	\item 
+\end{itemize}

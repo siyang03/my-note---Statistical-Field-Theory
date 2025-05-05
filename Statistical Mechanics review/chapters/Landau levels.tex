@@ -80,7 +80,7 @@
 	
 	\item 对应的 energy eigenvalue 为
 	\begin{equation} \label{A.1.14}
-		\epsilon = 2 \hbar \omega_L \Big( n_r + \frac{1 + |l| + l}{2} \Big) + \frac{p_z^2}{2 m}, \quad \text{with} \quad \begin{dcases}
+		\epsilon = 2 \hbar \omega_L \Big( n_r + \theta(l) l + \frac{1}{2} \Big) + \frac{p_z^2}{2 m}, \quad \text{with} \quad \begin{dcases}
 			n_r \in \mathbb{Z}_{\geq 0} \\
 			l \in \mathbb{Z}
 		\end{dcases}.
@@ -121,9 +121,10 @@
 		H &= \frac{|\vec{p}|^2}{2 m} + \omega_L (x p_y - y p_x) + \frac{1}{2} m \omega_L^2 (x^2 + y^2) \notag \\
 		&= \frac{p_z^2}{2 m} + \Big( \frac{p_x^2 + p_y^2}{2 m} + \omega_L (x p_y - y p_x) + \frac{1}{2} m \omega_L^2 (x^2 + y^2) \Big) \notag \\
 		&= \frac{p_z^2}{2 m} + \Big( \frac{p_x + i p_y}{\sqrt{2 m}} + i \sqrt{\frac{m}{2}} \omega_L (x + i y) \Big) \Big( \frac{p_x - i p_y}{\sqrt{2 m}} - i \sqrt{\frac{m}{2}} \omega_L (x - i y) \Big) + \hbar \omega_L \notag \\
-		&= \frac{p_z^2}{2 m} + 2 \hbar \omega_L \Big( a^\dag a + \frac{1}{2} \Big),
+		&= \frac{p_z^2}{2 m} + 2 \hbar \omega_L \Big( a^\dag a + \frac{1}{2} \Big).
 	\end{align}
-	因此, 系统的能量本征态为
+	
+	\item 因此, 系统的能量本征态为
 	\begin{equation}
 		\ket{p_z} \otimes (a^\dag)^{n_a} \ket{0}_a \otimes (b^\dag)^{n_b} \ket{0}_b, \quad \text{with} \quad \begin{dcases}
 			n_a \in \mathbb{Z}_{\geq 0} \\
@@ -141,8 +142,8 @@
 		\item 与 \eqref{A.1.14} 有对应关系
 		\begin{equation}
 			\begin{dcases}
-				n_a = n_r + \frac{l + |l|}{2} \geq n_r \\
-				n_b = n_r - \frac{l - |l|}{2} \geq n_r
+				n_a = n_r + \theta(l) l \geq n_r \\
+				n_b = n_r - \theta(- l) l \geq n_r
 			\end{dcases}.
 		\end{equation}
 	\end{itemize}
