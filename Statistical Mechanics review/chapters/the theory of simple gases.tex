@@ -1,4 +1,4 @@
-\chapter{the theory of simple gases}
+\chapter{the theory of simple gases} \label{6}
 \section{an ideal gas in various quantum-mechanical ensembles}
 \subsection{in a microcanonical ensemble}
 \begin{itemize}
@@ -227,3 +227,171 @@
 \end{itemize}
 
 \section{gaseous systems composed of molecules with internal motion}
+\begin{itemize}
+	\item 本 section 在经典统计极限下 ($n \lambda^3 \ll 1$) 计算.
+	
+	\item 令粒子的能级为
+	\begin{equation}
+		\epsilon = \underbrace{\frac{|\vec{p}|}{2 m}}_{= \epsilon_K} + \epsilon_\text{in},
+	\end{equation}
+	其中 $\epsilon_\text{in}$ 是 internal motion 的能量.
+	
+	\item 系统的 grand partition function 为
+	\begin{equation}
+		\frac{P V}{k_B T} = \ln Z_\text{GC} = \frac{V}{\lambda^3} z j(T),
+	\end{equation}
+	其中 internal partition function 为
+	\begin{equation}
+		j(T) = \sum_\text{internal} g_\text{in}(\epsilon_\text{in}) e^{- \beta \epsilon_\text{in}}.
+	\end{equation}
+	
+	\begin{tcolorbox}[title=calculation:]
+		\begin{align}
+			\ln Z_\text{GC} &= \sum_i g_i z e^{- \beta \epsilon_i} = z \sum_{\epsilon_K} g_K(\epsilon_K) e^{- \beta \epsilon_K} \sum_\text{internal} g_\text{in}(\epsilon_\text{in}) e^{- \beta \epsilon_\text{in}} \notag \\
+			&= \frac{V}{\lambda^3} z \sum_\text{internal} g_\text{in}(\epsilon_\text{in}) e^{- \beta \epsilon_\text{in}}.
+		\end{align}
+	\end{tcolorbox}
+	
+	\item 得到
+	\begin{equation}
+		\begin{dcases}
+			N = z \frac{\partial}{\partial z} \ln Z_\text{GC} = \frac{V}{\lambda^3} z j(T) \iff \mu = k_B T (\ln n \lambda^3 - \ln j(T)) \\
+			U = - \frac{\partial}{\partial \beta} \ln Z_\text{GC}(T, V, z) = N \Big( \frac{3}{2} k_B T + k_B T^2 \frac{\partial}{\partial T} \ln j(T) \Big) \\
+			S = N k_B \Big( \frac{5}{2} - \beta \mu + T \frac{\partial}{\partial T} \ln j(T) \Big)
+		\end{dcases}.
+	\end{equation}
+	
+	\item 分子的 internal energy 由以下四种因素决定:
+	\begin{enumerate}
+		\item the electronic state,
+		
+		\item the state of nuclei,
+		
+		\item the vibrational state,
+		
+		\item the rotational state,
+	\end{enumerate}
+	严格说, these four excitation modes mutually interact, 但大多数情况下, 他们可以单独处理.
+	
+	\item 因此 $j(T)$ 可以写作
+	\begin{equation}
+		j(T) = j_\text{elec}(T) j_\text{nuc}(T) j_\text{vib}(T) j_\text{rot}(T),
+	\end{equation}
+	当 nuclei state 和 rotational state 的相互作用不可忽略时,
+	\begin{equation}
+		j(T) = j_\text{elec}(T) j_\text{nuc-rot}(T) j_\text{vib}(T).
+	\end{equation}
+\end{itemize}
+
+\subsection{monatomic molecules}
+\begin{itemize}
+	\item 考虑温度远低于 ionization energy 的单原子气体, $T \ll \epsilon_\text{ion} / k_B \sim 10^4 \text{-} 10^5 \, \text{K}$, 此时, (几乎) 所有原子都处于 (electronic) ground state.
+	
+	\item nuclei state 有 spin-$S_n$, 因此 $j_\text{nuc}(T) = g_\text{nuc} = 2 S_n + 1$.
+	\item 得到
+	\begin{equation}
+		j(T) = (2 S_n + 1) \sum_{J = |L - S|}^{L + S} (2 J + 1) e^{- \beta \epsilon_{L, S, J}},
+	\end{equation}
+	其中 $L, S$ 分别是电子的 orbital angular momentum 和 spin, 因为原子处于 electronic ground state, $L, S$ 是常数, (通常 $L = S = 0$), 可以简写 $\epsilon_J \equiv \epsilon_{L, S, J}$.
+	\begin{itemize}
+		\item 如果 $\epsilon_J \ll k_B T$, 那么
+		\begin{equation}
+			j_\text{elec}(T) \simeq \sum_{J = |L - S|}^{L + S} (2 J + 1) = (2 L + 1) (2 S + 1).
+		\end{equation}
+		
+		\item 如果 $\epsilon_J \gg k_B T$, 那么
+		\begin{equation}
+			j_\text{elec}(T) \simeq (2 J_0 + 1) e^{- \beta \epsilon_0},
+		\end{equation}
+		下标 $0$ 表示 fine structure 中的 lowest energy state.
+	\end{itemize}
+	
+	\item 系统的能量为
+	\begin{equation}
+		U = \begin{dcases}
+			\frac{3}{2} N k_B T & \epsilon_J \ll k_B T \\
+			\frac{3}{2} N k_B T + N \epsilon_0 & \epsilon_J \gg k_B T
+		\end{dcases}.
+	\end{equation}
+	
+	\item 可见, 无论在高温还是低温极限下, 气体的 specific heat 都是 $\frac{3}{2} N k_B$, 只有 entropy 和 chemical potential 受到影响.
+	\begin{itemize}
+		\item specific heat 在 $T \sim \Delta \epsilon_J / k_B$ 时达到极大, $\Delta \epsilon_J$ 是 separation of the fine structure levels.
+	\end{itemize}
+\end{itemize}
+
+\subsection{diatomic molecules}
+\begin{itemize}
+	\item 同样, 考虑温度远低于 energy of dissociation, $T \ll \epsilon_\text{diss} / k_B \sim 10^4 \text{-} 10^5 \, \text{K}$, 此时, 所有分子处于 lowest electronic state.
+	
+	\item 考虑
+	\begin{equation}
+		j_\text{elec}(T) = g_0 + g_1 e^{- \beta \Delta},
+	\end{equation}
+	那么
+	\begin{equation}
+		\begin{dcases}
+			U_\text{elec} = N \Delta \frac{(g_1 / g_0) e^{- \beta \Delta}}{1 + (g_1 / g_0) e^{- \beta \Delta}} \\
+			(C_V)_\text{elec} = N k_B \Big( \frac{\Delta}{k_B T} \Big)^2 \frac{(g_1 / g_0) e^{- \beta \Delta}}{(1 + (g_1 / g_0) e^{- \beta \Delta})^2}
+		\end{dcases},
+	\end{equation}
+	得到 $T$-$(C_V)_\text{elec}$ 关系如下图:
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.8]{figures/plot of T-(C_V)_text{elec}.pdf}
+		\caption{plot of $T$-$(C_V)_\text{elec}$.}
+	\end{figure}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item 考虑分子振动频率 $\omega$ (更高频未激发), 参考 subsection \ref{3.6.2}, harmonic oscillator 的 specific heat 为
+	\begin{equation}
+		(C_V)_\text{vib} = N k_B \Big( \frac{\Theta_v}{T} \Big)^2 \frac{e^{\Theta_v / T}}{(e^{\Theta_v / T} - 1)^2}, \quad \Theta_v = \frac{\hbar \omega}{k_B},
+	\end{equation}
+	其图像见 figure \ref{figure 6.4 (a)}.
+	
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[scale=0.8]{figures/plot of T-(C_V)_text{vib}.pdf}
+			\caption{plot of $T$-$(C_V)_\text{vib}$.}
+			\label{figure 6.4 (a)}
+		\end{subfigure}
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[scale=0.8]{figures/plot of T-(C_V)_text{rot}.pdf}
+			\caption{plot of $T$-$(C_V)_\text{rot}$.}
+			\label{figure 6.4 (b)}
+		\end{subfigure}
+		\caption{}
+	\end{figure}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item nuclei states 和 rotational states 之间的相互作用在 heteronuclear molecules 中可以忽略, 但在 homonuclear molecules 中不能.
+	
+	\item 首先考虑 heteronuclear 的情况, rotational partition function 为
+	\begin{align}
+		j_\text{rot}(T) &= \sum_{l = 0}^\infty (2 l + 1) e^{- \beta l (l + 1) \hbar^2 / (2 I)} \notag \\
+		&\approx \begin{dcases}
+			\frac{T}{\Theta_r} + \frac{1}{3} + \frac{1}{15} \frac{\Theta_r}{T} + \frac{4}{315} \Big( \frac{\Theta_r}{T} \Big)^2 + \cdots & T \gg \Theta_r \\
+			1 + 3 e^{- 2 \Theta_r / T} + 5 e^{- 6 \Theta_r / T} + \cdots & T \ll \Theta_r
+		\end{dcases},
+	\end{align}
+	其中 $I = \frac{m_1 m_2}{(m_1 + m_2)} r_0^2$ 是分子的 moment of inertia, $\Theta_r = \frac{\hbar^2}{2 I k_B}$.
+	
+	\item 由此引入的 specific heat 为
+	\begin{equation}
+		(C_V)_\text{rot} \approx \begin{dcases}
+			N k_B \Big( 1 + \frac{1}{45} \Big( \frac{\Theta_r}{T} \Big)^2 + \frac{16}{945} \Big( \frac{\Theta_r}{T} \Big)^3 \cdots \Big) & T \gg \Theta_r \\
+			12 N k_B \Big( \frac{\Theta_r}{T} \Big)^2 e^{- 2 \Theta_r / T} & T \ll \Theta_r
+		\end{dcases},
+	\end{equation}
+	其图像见 figure \ref{figure 6.4 (b)}.
+	
+	\noindent\hdashrule[0.5ex]{\linewidth}{0.5pt}{1mm} % horizontal dashed line
+	
+	\item homonuclear 的情况下...
+\end{itemize}
