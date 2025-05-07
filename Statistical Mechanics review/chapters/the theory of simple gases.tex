@@ -346,7 +346,7 @@
 	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
 	
 	\item 考虑分子振动频率 $\omega$ (更高频未激发), 参考 subsection \ref{3.6.2}, harmonic oscillator 的 specific heat 为
-	\begin{equation}
+	\begin{equation} \label{6.4.14}
 		(C_V)_\text{vib} = N k_B \Big( \frac{\Theta_v}{T} \Big)^2 \frac{e^{\Theta_v / T}}{(e^{\Theta_v / T} - 1)^2}, \quad \Theta_v = \frac{\hbar \omega}{k_B},
 	\end{equation}
 	其图像见 figure \ref{figure 6.4 (a)}.
@@ -394,4 +394,64 @@
 	\noindent\hdashrule[0.5ex]{\linewidth}{0.5pt}{1mm} % horizontal dashed line
 	
 	\item homonuclear 的情况下...
+\end{itemize}
+
+\subsection{polyatomic molecules}
+\begin{itemize}
+	\item 经典近似下, rotational partition function 为
+	\begin{align}
+		j_\text{rot}(T) &\simeq \int_{- \infty}^\infty \frac{d\Omega dL_1 dL_2 dL_3}{h^3} e^{- \beta (L_1^2 / (2 I_1) + L_2^2 / (2 I_2) + L_3^2 / (2 I_3))} \notag \\
+		&= \frac{8 \pi^2}{h^3} \prod_{i = 1, 2, 3} \sqrt{\frac{2 I_i \pi}{\beta}} = \sqrt{\pi} \prod_{i = 1, 2, 3} \sqrt{\frac{2 I_i k_B T}{\hbar^2}}.
+	\end{align}
+	
+	\item 此时
+	\begin{equation}
+		(C_V)_\text{rot} = \frac{3}{2} N k_B.
+	\end{equation}
+	
+	\item 振动与 \eqref{6.4.14} 类似, 只是多了几个振动模式.
+\end{itemize}
+
+\section{chemical equilibrium}
+\begin{itemize}
+	\item 对于 chemical reaction
+	\begin{equation}
+		\nu_\text{A} \text{A} + \nu_\text{B} \text{B} \rightleftarrows \nu_\text{X} \text{X} + \nu_\text{Y} \text{Y},
+	\end{equation}
+	系统达到 chemical equilibrium 的条件是
+	\begin{equation} \label{6.5.2}
+		\nu_\text{A} \mu_\text{A} + \nu_\text{B} \mu_\text{B} = \nu_\text{X} \mu_\text{X} + \nu_\text{Y} \mu_\text{Y}.
+	\end{equation}
+	
+	\item 如果系统是 ideal gas 或 dilute solution, 系统的 free energy 是各成分的和, 那么
+	\begin{equation}
+		F = N \braket{\epsilon} + N k_B T \ln(n \lambda^3) - N k_B T - N k_B T \ln j(T),
+	\end{equation}
+	因此
+	\begin{equation}
+		\mu_\text{A} = \Big( \frac{\partial F}{\partial N_\text{A}} \Big)_{T, V} = \braket{\epsilon_\text{A}} + k_B T \ln(n_\text{A} \lambda_\text{A}^3) - k_B T \ln j_\text{A}(T),
+	\end{equation}
+	那么 \eqref{6.5.2} 化为,
+	\begin{equation}
+		\frac{\prod [\text{X}]^{\nu_\text{X}}}{\prod [\text{A}]^{\nu_\text{A}}} = e^{- \beta \Delta \mu^{(0)}(T)},
+	\end{equation}
+	其中 $[\text{A}] = n_\text{A} / n_0$, $n_0$ 可以任取,
+	\begin{equation}
+		\begin{dcases}
+			\Delta \mu^{(0)} = \nu_\text{X} \mu_\text{X}^{(0)} + \nu_\text{Y} \mu_\text{Y}^{(0)} - \nu_\text{A} \mu_\text{A}^{(0)} - \nu_\text{B} \mu_\text{B}^{(0)} \\
+			\mu_\text{A}^{(0)}(T) = \mu_\text{A}(n_\text{A} = n_0, T)
+		\end{dcases}.
+	\end{equation}
+	
+	\begin{tcolorbox}[title=calculation:]
+		注意到
+		\begin{equation}
+			e^{\nu_\text{A} \beta \mu_\text{A}} = \Big( \frac{n_\text{A} \lambda_\text{A}^3}{j_\text{A}(T)} \Big)^{\nu_\text{A}} e^{\nu_\text{A} \beta \braket{\epsilon_\text{A}}},
+		\end{equation}
+		代入,
+		\begin{align}
+			& \prod_\text{A} [\text{A}]^{\nu_\text{A}} \Big( \frac{n_0 \lambda_\text{A}^3}{j_\text{A}(T)} \Big)^{\nu_\text{A}} e^{\nu_\text{A} \beta \braket{\epsilon_\text{A}}} = \prod_\text{X} [\text{X}]^{\nu_\text{X}} \Big( \frac{n_0 \lambda_\text{X}^3}{j_\text{X}(T)} \Big)^{\nu_\text{X}} e^{\nu_\text{X} \beta \braket{\epsilon_\text{X}}} \notag \\
+			\Longrightarrow & \frac{\prod [\text{X}]^{\nu_\text{X}}}{\prod [\text{A}]^{\nu_\text{A}}} = \cdots
+		\end{align}
+	\end{tcolorbox}
 \end{itemize}
