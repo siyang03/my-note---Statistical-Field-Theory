@@ -1,12 +1,12 @@
 \chapter{ideal Fermi systems} \label{8}
 \begin{itemize}
-	\item $f_n(z)$ 是 Fermi-Dirac function,
+	\item $f_n(z)$ 是 Fermi--Dirac function,
 	\begin{equation}
 		f_n(z) \equiv \frac{1}{\Gamma(n)} \int_0^\infty \frac{x^{n - 1}}{z^{- 1} e^x + 1} dx = z - \frac{z^2}{2^n} + \frac{z^3}{3^n} - \cdots, \quad \text{and} \quad f_n'(z) = \frac{1}{z} f_{n - 1}(z),
 	\end{equation}
 	是单调递增函数 (当 $n > 0$), $- 1 < z < 1$, 且 $f_n(1) = (1 - 2^{1 - n}) \zeta(n)$.
 	\begin{itemize}
-		\item 与 Bose-Einstein statistics 不同, $f_n(z)$ 在 $z = 1$ 没有极点, 只是它的级数展开在 $z > 1$ 发散 (因为 $z = - 1$ 处有极点).
+		\item 与 Bose--Einstein statistics 不同, $f_n(z)$ 在 $z = 1$ 没有极点, 只是它的级数展开在 $z > 1$ 发散 (因为 $z = - 1$ 处有极点).
 		
 		\item $g_n(z) = - f_n(- z) = \mathrm{Li}_n(z)$, 称为 \href{https://en.wikipedia.org/wiki/Polylogarithm}{Polylogarithm}, 见下图:
 		
@@ -90,7 +90,7 @@
 
 \subsubsection{with finite temperature}
 \begin{itemize}
-	\item 将 Fermi-Dirac function 关于 $\ln z = \beta \mu$ 展开, 得到
+	\item 将 Fermi--Dirac function 关于 $\ln z = \beta \mu$ 展开, 得到
 	\begin{equation} \label{8.1.10}
 		\begin{dcases}
 			N = N_s \frac{4 \pi}{3} V \Big( \frac{2 m}{h^2} \beta \ln z \Big)^{\frac{3}{2}} \Big( 1 + \frac{\pi^2}{8} (\ln z)^{- 2} + \cdots \Big) \Longrightarrow \mu \simeq \epsilon_F \Big( 1 - \frac{\pi^2}{12} (\beta \epsilon_F)^{- 2} \Big) \\
@@ -102,7 +102,7 @@
 	\end{equation}
 	可见 $T \rightarrow 0$ 时 $S \rightarrow 0$, 符合预期.
 	
-	\item ideal Fermi gas 的 specific heat 和 $T$-$P V$ 关系如下图所示:
+	\item ideal Fermi gas 的 specific heat 和 $T$--$P V$ 关系如下图所示:
 	
 	\begin{figure}[H]
 		\centering
@@ -114,16 +114,16 @@
 		\end{subfigure}
 		\begin{subfigure}{0.4\linewidth}
 			\centering
-			\includegraphics[scale=0.65]{figures/plot of T-PV (Fermi).pdf}
-			\caption{plot of $T$-$P V$.}
+			\includegraphics[scale=0.65]{figures/plot of T--PV (Fermi).pdf}
+			\caption{plot of $T$--$P V$.}
 		\end{subfigure}
 		\caption{}
 	\end{figure}
 \end{itemize}
 
-\section{magnetic behavior of an ideal Fermi gas}
+\section{magnetic behavior of an ideal Fermi gas} \label{8.2}
 \begin{itemize}
-	\item Maxwell-Boltzmann statistics 给出的结果见 section \ref{3.7}.
+	\item Maxwell--Boltzmann statistics 给出的结果见 section \ref{3.7}.
 \end{itemize}
 
 \subsection{Pauli paramagnetism}
@@ -288,9 +288,9 @@
 	\end{equation}
 \end{itemize}
 
-\section{the electron gas in metals}
+\section{the electron gas in metals} \label{8.3}
 \begin{itemize}
-	\item 用 Maxwell-Boltzmann statistics 描述 electron gas 的理论称为 Drude-Lorentz model, 用 Fermi-Dirac statistics 的理论由 Sommerfeld 提出, 称为 free electron model.
+	\item 用 Maxwell-Boltzmann statistics 描述 electron gas 的理论称为 Drude-Lorentz model, 用 Fermi--Dirac statistics 的理论由 Sommerfeld 提出, 称为 free electron model.
 	
 	\item 以 Na 为例,
 	\begin{equation}
@@ -391,10 +391,10 @@
 		其中, 取 $\alpha \approx 0.676$, 且 mass of the sun $\astrosun \simeq 1.989 \times 10^{30} \, \text{kg}$.
 	\end{itemize}
 	
-	\item 得到 white dwarfs 的 mass-radius relationship, 如下图:
+	\item 得到 white dwarfs 的 mass--radius relationship, 如下图:
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=1]{figures/the mass-radius relationship for white dwarfs.pdf}
-		\caption{the mass-radius relationship for white dwarfs.}
+		\includegraphics[scale=1]{figures/the mass--radius relationship for white dwarfs.pdf}
+		\caption{the mass--radius relationship for white dwarfs.}
 	\end{figure}
 \end{itemize}
