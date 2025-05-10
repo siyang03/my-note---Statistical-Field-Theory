@@ -15,21 +15,56 @@
 
 \section{general remarks on the problem of condensation}
 \begin{itemize}
-	\item 考虑一个 $N$-particle system, 具有 potential energy 为
+	\item 对任何热力学系统, 都有
 	\begin{equation}
-		V = \sum_{i < j} u(r_{i j}), \quad \text{with} \quad u(r) = \begin{dcases}
-			\infty & r < \sigma \\
-			\in (- \epsilon, 0) & \sigma < r < r^* \\
-			0 & r^* < r
-		\end{dcases},
+		\Big( \frac{\partial P'}{\partial v} \Big)_{V, T} = - \frac{k_B T}{v^2} \frac{\braket{N}}{\braket{(\Delta N)^2}} \leq 0,
 	\end{equation}
-	interparticle potential $u(r)$ 如下图:
+	其中 $P'$ 定义为
+	\begin{equation}
+		P' := \frac{k_B T}{V} \ln Z_\text{GC} \equiv - \frac{\Phi_\text{G}}{V},
+	\end{equation}
+	对于 homogeneous system (注意 multiphase systems 也可以是 homogeneous, 但要忽略表面效应) 有 $P' = P$.
+	
+	\begin{tcolorbox}[title=calculation:]
+		注意到
+		\begin{equation}
+			- \frac{V}{N^2} \Big( \frac{\partial P'}{\partial v} \Big)_{T, V} = \Big( \frac{\partial P'}{\partial N} \Big)_{T, V} = - \frac{1}{V} \Big( \frac{\partial \Phi_\text{G}}{\partial N} \Big)_{T, V},
+		\end{equation}
+		且
+		\begin{equation}
+			\Big( \frac{\partial \Phi_\text{G}}{\partial N} \Big)_{T, V} = - N \Big( \frac{\partial \mu}{\partial N} \Big)_{T, V} = - \frac{N}{\big( \frac{\partial N}{\partial \mu} \big)_{T, V}} = - \frac{N}{\beta \braket{(\Delta N)^2}},
+		\end{equation}
+		最后一个等号用到了 \eqref{4.4.1}.
+	\end{tcolorbox}
+	
+	\item 注意到, 在某些区间, $\braket{(\Delta N)^2} \sim O(N^2)$, 此时
+	\begin{equation}
+		\Big( \frac{\partial P'}{\partial v} \Big)_{V, T} \sim O(N^{- 1}) \simeq 0.
+	\end{equation}
+\end{itemize}
+
+\section{condensation of a van der Waals gas}
+\begin{itemize}
+	\item van der Waals gas 满足 equation of state 为
+	\begin{equation}
+		P = \frac{k_B T}{v - b} - \frac{a}{v^2} \quad \text{or} \quad P_r = \frac{8 T_r}{3 v_r - 1} - \frac{3}{v_r^2},
+	\end{equation}
+	其中 $P_r = \frac{P}{P_c}, v_r = \frac{v}{v_c}, T_r = \frac{T}{T_c}$, 且
+	\begin{equation}
+		P_c = \frac{a}{27 b^2}, \quad v_c = 3 b, \quad T_c = \frac{8 a}{27 b k_B}. \upsilon v
+	\end{equation}
+	
+	\item van der Waals gas 的 isotherms 如下图所示:
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=1]{figures/the interparticle potential.pdf}
-		\caption{the interparticle potential.}
+		\includegraphics[scale=0.8]{figures/isotherms of the van der Waals gas.pdf}
+		\caption{isotherms of the van der Waals gas.}
 	\end{figure}
+	
+	\begin{itemize}
+		\item 具体的计算细节可以参考 Wikipedia page: \href{https://en.wikipedia.org/wiki/Van_der_Waals_equation#Saturation}{van der Waals equation: saturation}.
+	\end{itemize}
 	
 	\item 
 \end{itemize}
