@@ -3,10 +3,11 @@
 \usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
 \usepackage{graphicx}
 \usepackage{mathtools}
+\DeclareMathOperator{\arcsinh}{arcsinh}
 \usepackage{amssymb}
+\usepackage{wasysym} % for \astrosun and more!
 \usepackage{mathrsfs} % to use \mathscr{...}
 \usepackage{xcolor} % \textcolor{red}{...} & \mathcolor{red}{...}
-\usepackage{nameref}
 \usepackage{hyperref} %Automatically links \label and \ref commands; Always load last
 \hypersetup{
 	linktocpage,
@@ -16,6 +17,19 @@
 	filecolor=magenta, % color of file links
 	urlcolor=purple, % color of external links
 } % hidelinks
+%----------------------------------------------------------------------
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}  % Clear all headers and footers
+
+% Redefine chapter mark to include chapter number and title
+\renewcommand{\chaptermark}[1]{%
+	\markboth{Chapter \thechapter\ #1}{}%
+}
+
+\fancyhead[L]{\nouppercase{\leftmark}}  % Header always on the left
+\fancyfoot[C]{\thepage}                 % Centered page number
 %----------------------------------------------------------------------
 % for XeTeX
 \usepackage{xeCJK}
@@ -49,7 +63,7 @@
 %	\includegraphics[scale=1]{figures/file-name}
 %	\caption{...}
 %\end{figure}
-\usepackage{subfigure}
+\usepackage{subcaption}
 % following David Tong's convention, one should always add a caption to figures, but not to tables.
 % use \vcenter{\hbox{\includegraphics[...]{...}}} to insert figures (e.g. Feynman diagrams) in equation environment.
 %----------------------------------------------------------------------
@@ -61,6 +75,7 @@
 
 \usepackage{leftindex}
 \usepackage{tensor} % how to handle indeces: https://tex.stackexchange.com/questions/11542/left-and-right-subscript-superscript
+\usepackage{isotope} % e.g. \isotoe[4][2]{He} = helium-4
 
 \usepackage{simpler-wick} % to use Wick contraction
 %\usepackage[compat=1.1.0]{tikz-feynman}
@@ -72,7 +87,7 @@
 %----------------------------------------------------------------------
 \title{\Huge \textbf{Statistical Field Theory}}
 \author{Siyang Wan (万思扬)}
-\date{April 19, 2025}
+\date{April 20, 2025}
 %----------------------------------------------------------------------
 \begin{document}
 	\maketitle
@@ -85,18 +100,17 @@
 	
 	\import{chapters/}{convention, notation, and units}
 	
-	\part{thermodynamics and statistical physics}
-	
-	\import{chapters/}{fundamentals of statistical mechanics}
-	
-	\part{statistical field theory}
+	\part{from spins to fields}
 	
 	\import{chapters/}{the Ising model}
 	
 	\appendix
-	
 	% Add the appendix to the table of contents and bookmarks
-	%\part*{Appendices}
-	%\addcontentsline{toc}{part}{Appendices}
+	\part*{Appendices}
+	\addcontentsline{toc}{part}{Appendices}
+	% --- Appendices get "Appendix <letter> <title>" ---
+	\renewcommand{\chaptermark}[1]{%
+		\markboth{Appendix \thechapter\ #1}{}%
+	}
 	
 \end{document}

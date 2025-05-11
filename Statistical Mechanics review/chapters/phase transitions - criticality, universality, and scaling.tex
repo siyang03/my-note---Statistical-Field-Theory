@@ -44,6 +44,57 @@
 \end{itemize}
 
 \section{condensation of a van der Waals gas}
+\subsection{mean field estimate}
+\begin{itemize}
+	\item 考虑气体分子之间具有相互作用, 那么系统的 partition function 为
+	\begin{align}
+		Z_\text{C}(T, V, N) &= \frac{1}{N!} \int \frac{d^{3 N} p d^{3 N} q_i}{h^{3 N}} e^{- \beta \sum_{i = 1}^N \frac{p_i^2}{2 m}} e^{- \beta \sum_{i < j} u(q_i - q_j)} \notag \\
+		&\simeq \frac{1}{N! \lambda^{3 N}} \Big( V - \frac{N \Omega}{2} \Big)^N e^{\beta \frac{V}{2 v^2} u}.
+	\end{align}
+	
+	\begin{tcolorbox}[title=calculation:]
+		考虑
+		\begin{equation}
+			\sum_{i < j} u(\vec{q}_i - \vec{q}_j) = \frac{1}{2} \int d^3 r_1 d^3 r_2 \, n(\vec{r}_1) n(\vec{r}_2) u(\vec{r}_1 - \vec{r}_2),
+		\end{equation}
+		其中
+		\begin{equation}
+			n(\vec{r}) = \sum_{i = 1}^N \delta^{(3)}(\vec{r} - \vec{q}_i) \Longrightarrow \int d^3 r \, n(\vec{r}) = N,
+		\end{equation}
+		作 approximation of uniform density, 那么
+		\begin{equation}
+			n(\vec{r}) \simeq \frac{N}{V} \Longrightarrow \sum_{i < j} u(\vec{q}_i - \vec{q}_j) \simeq \frac{V}{2 v^2} \int d^3 r \, u(\vec{r}),
+		\end{equation}
+		注意到
+		\begin{equation}
+			u(\vec{r}) = u(r) = \begin{dcases}
+				\infty & r < \sigma \\
+				< 0 & r > \sigma
+			\end{dcases} \quad \text{and} \quad \int_\sigma^\infty u(r) 4 \pi r^2 dr = - u < 0,
+		\end{equation}
+		代入
+		\begin{equation}
+			\sum_{i < j} u(\vec{q}_i - \vec{q}_j) \simeq - \frac{V}{2 v^2} u,
+		\end{equation}
+		最后, 注意到 (其中 $\Omega = \frac{4 \pi}{3} (2 \sigma)^3$)
+		\begin{equation}
+			\int d^{3 N} q \simeq V (V - \Omega) \cdots (V - (N - 1) \Omega) \simeq V^N - \frac{N^2}{2} \Omega V^{N - 1} \simeq \Big( V - \frac{N \Omega}{2} \Big)^N,
+		\end{equation}
+		所以...
+	\end{tcolorbox}
+	
+	\item 得到
+	\begin{equation}
+		\begin{dcases}
+			F = - k_B T \ln Z_\text{C} = N k_B T \Big( - 1 + \ln \frac{n \lambda^3}{1 - \frac{n \Omega}{2}} \Big) - \frac{N^2}{2 V} u \\
+			P = - \Big( \frac{\partial F}{\partial V} \Big)_{T, N} = k_B T \Big( \frac{\partial \ln Z_\text{C}}{\partial V} \Big)_{T, N} = \frac{k_B T}{v - \frac{\Omega}{2}} - \frac{u}{2 v^2} \\
+			S = N k_B \Big( \frac{5}{2} - \ln \frac{n \lambda^3}{1 - \frac{n \Omega}{2}} \Big) \\
+			U = \frac{3}{2} N k_B T - \frac{N^2}{2 V} u
+		\end{dcases}.
+	\end{equation}
+\end{itemize}
+
+\subsection{the van der Waals equation}
 \begin{itemize}
 	\item van der Waals gas 满足 equation of state 为
 	\begin{equation}
@@ -51,7 +102,7 @@
 	\end{equation}
 	其中 $P_r = \frac{P}{P_c}, v_r = \frac{v}{v_c}, T_r = \frac{T}{T_c}$, 且
 	\begin{equation}
-		P_c = \frac{a}{27 b^2}, \quad v_c = 3 b, \quad T_c = \frac{8 a}{27 b k_B}. \upsilon v
+		P_c = \frac{a}{27 b^2}, \quad v_c = 3 b, \quad k_B T_c = \frac{8 a}{27 b}.
 	\end{equation}
 	
 	\item van der Waals gas 的 isotherms 如下图所示:
@@ -65,6 +116,9 @@
 	\begin{itemize}
 		\item 具体的计算细节可以参考 Wikipedia page: \href{https://en.wikipedia.org/wiki/Van_der_Waals_equation#Saturation}{van der Waals equation: saturation}.
 	\end{itemize}
-	
+\end{itemize}
+
+\section{a dynamical model of phase transitions}
+\begin{itemize}
 	\item 
 \end{itemize}
