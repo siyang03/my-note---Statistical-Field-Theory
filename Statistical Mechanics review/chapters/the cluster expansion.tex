@@ -1,0 +1,32 @@
+\chapter{the cluster expansion}
+\section{the Mayer f function}
+\begin{itemize}
+	\item 考虑具有相互作用的气体, 其 Hamiltonian 为
+	\begin{equation}
+		H = \sum_{i = 1}^N \frac{|\vec{p}_i|^2}{2 m} + \sum_{i > j} u(r_{i j}),
+	\end{equation}
+	
+	\item 那么, 系统的 partition function 为
+	\begin{align}
+		Z_\text{C} &= \frac{1}{N! \lambda^{3 N}} \int d^{3 N} q \, e^{- \beta \sum_{i > j} u(r_{i j})} \notag \\
+		&= \frac{1}{N! \lambda^{3 N}} \int d^{3 N} q \, \Big( 1 + \sum_{i > j} f_{i j} + \sum_{i > j, k > l} f_{i j} f_{k l} \Big), \label{10.1.2}
+	\end{align}
+	其中 $f_{i j}$ 称为 Mayer f function, 为
+	\begin{equation}
+		f_{i j} := e^{- \beta u(r_{i j})} - 1.
+	\end{equation}
+	\begin{itemize}
+		\item 注意 \eqref{10.1.2} 中的求和里, $f_{i j} f_{k l} f_{m n} \cdots$ 里不存在 identical pairs, 即 $(i, j) \neq (k, l) \neq (m, n) \neq \cdots$, 原因见 \eqref{10.1.4}.
+	\end{itemize}
+	
+	\begin{tcolorbox}[title=proof:]
+		\begin{equation} \label{10.1.4}
+			e^{- \beta \sum_{i > j} u(r_{i j})} = \prod_{i > j} (1 + f_{i j}) = \cdots
+		\end{equation}
+	\end{tcolorbox}
+\end{itemize}
+
+\section{the cluster expansion}
+\begin{itemize}
+	\item 
+\end{itemize}
