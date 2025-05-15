@@ -296,7 +296,7 @@
 \subsection{the Ising model in \texorpdfstring{$D = 1$}{D=1} dimensions}
 \begin{itemize}
 	\item $D = 1$ Ising model 也称为 Ising chain, 具有循环边界条件 $s_i = s_{N + 1}$, 那么
-	\begin{equation}
+	\begin{equation} \label{11.4.1}
 		Z_\text{C}(T, B, N) = \sum_{s_1 = \pm 1} \cdots \sum_{s_N = \pm 1} \prod_{i = 1}^N \exp(\beta B s_i + \beta J s_i s_{i + 1}) = \lambda_+^N + \lambda_-^N \simeq \lambda_+^N,
 	\end{equation}
 	其中
@@ -399,11 +399,127 @@
 		&= \ln 2 + 2 N \beta J + \Big( N e^{- 8 \beta J} + 2 N e^{- 12 \beta J} + \frac{9}{2} N e^{- 16 \beta J} + \cdots \Big),
 	\end{align}
 	可见 $F \propto N$.
+	\begin{itemize}
+		\item general lesson: partition function can be written as the exponential of the sum of \textbf{connected diagrams}.
+	\end{itemize}
 	
-	\item general lesson: partition function can be written as the exponential of the sum of \textbf{connected diagrams}.
+	\item 系统的 magnetization 为 (注意 $\frac{1}{1 + x} = 1 - x + x^2 + \cdots$)
+	\begin{align}
+		\braket{m} =& \pm \frac{2}{Z_\text{C}} e^{- \beta E_0} \bigg( 1 + \Big( 1 - \frac{2}{N} \Big) N e^{- 8 \beta J} + \Big( 1 - \frac{4}{N} \Big) 2 N e^{- 12 \beta J} \notag \\
+		& + \Big( \Big( 1 - \frac{4}{N} \Big) \frac{1}{2} N (N - 5) + \Big( 1 - \frac{8}{N} \Big) N + \Big( 1 - \frac{6}{N} \Big) 2 N + \Big( 1 - \frac{6}{N} \Big) 4 N \Big) e^{- 16 \beta J} + \cdots \bigg) \notag \\
+		=& \pm (1 - 2 e^{- 8 \beta J} - 8 e^{- 12 \beta J} - 34 e^{- 16 \beta J} - \cdots).
+	\end{align}
 \end{itemize}
 
-\subsection{Peierls droplets}
+\subsubsection{Peierls droplets}
+\begin{itemize}
+	\item 当温度升高时, low energy states become droplets, 对于一个周长为 $L$ 的 droplet, 其能量为
+	\begin{equation}
+		E \sim 2 J L,
+	\end{equation}
+	其 degeneracy (用 random walk 估计) 为
+	\begin{equation}
+		\Omega \sim e^{\alpha L},
+	\end{equation}
+	其中 $\ln 2 < \alpha < \ln 3$.
+	
+	\item 系统的 partition function 为
+	\begin{equation}
+		Z \sim \sum_L e^{(\alpha - 2 \beta J) L},
+	\end{equation}
+	估计相变发生在 $E \sim T_c S$, 因此
+	\begin{equation}
+		k_B T_c \sim \frac{2 J}{\alpha}.
+	\end{equation}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item 对于 $D = 1$ 的情况, droplet 的能量为
+	\begin{equation}
+		E = 2 J,
+	\end{equation}
+	其 degeneracy 为
+	\begin{equation}
+		\Omega = N,
+	\end{equation}
+	那么
+	\begin{equation}
+		Z \sim N e^{- \beta 2 J}
+	\end{equation}
+	可见相变温度估计为
+	\begin{equation}
+		T_c \sim \frac{2 J}{\ln N} \simeq 0,
+	\end{equation}
+	因此, 任何温度下 entropy 都占主导, $\braket{m} = 0$.
+\end{itemize}
+
+\subsection{2-dim. Ising model: high temperatures}
+\begin{itemize}
+	\item 考虑 $B = 0, \beta J \ll 1$ 下的 2-dim. square lattice.
+	
+	\item 注意到 $s_i s_j = \pm 1$, 因此
+	\begin{equation}
+		e^{\beta J s_i s_j} = \cosh \beta J + s_i s_j \sinh \beta J = \begin{dcases}
+			e^{\beta J} & s_i s_j = + 1 \\
+			e^{- \beta J} & s_i s_j = - 1
+		\end{dcases},
+	\end{equation}
+	所以
+	\begin{equation}
+		Z_\text{C} = \sum_{\{s_i\}} \prod_{\braket{i j}} e^{\beta J s_i s_j} = \cosh^{q N / 2} \beta J \sum_{\{s_i\}} \prod_{\braket{i j}} (1 + s_i s_j \tanh \beta J).
+	\end{equation}
+	
+	\item 对求和中的 $\tanh \beta J$ 作展开, 得到
+	\begin{equation}
+		Z_\text{C} = 2^N \cosh^{2 N} \beta J \Big( 1 + N \tanh^4 \beta J + 2 N \tanh^6 \beta J + \frac{1}{2} N (N + 9) \tanh^8 \beta J + \cdots \Big).
+	\end{equation}
+	
+	\begin{tcolorbox}[title=calculation:]
+		\begin{align}
+			& \sum_{\{s_i\}} \prod_{\braket{i j}} (1 + s_i s_j \tanh \beta J) \notag \\
+			=& 2^N + \sum_{\{s_i\}} \sum_{\braket{i j}} s_i s_j \tanh \beta J + \frac{1}{2} \sum_{\{s_i\}} \sum_{\braket{i j} \neq \braket{k l}} s_i s_j s_k s_l \tanh^2 \beta J \notag \\
+			& + \frac{1}{3!} \sum_{\{s_i\}} \sum_{\braket{i j} \neq \braket{k l} \neq \braket{m n}} \cdots,
+		\end{align}
+		但是, 注意到
+		\begin{equation}
+			\vcenter{\hbox{\includegraphics[scale=1]{figures/graph of s_i s_j.pdf}}} = \sum_{s_i, s_j = \pm 1} s_i s_j = + 1 - 1 - 1 + 1 = 0,
+		\end{equation}
+		要避免求和为零, 就必须让每一个 lattice site 都是平方项, 比如 (注意, 下图中 $1, 4$ 不是 nearest neighbor)
+		\begin{equation} \label{11.4.26}
+			\vcenter{\hbox{\includegraphics[scale=1]{figures/graph of (s_1 s_2 s_3 s_4)^2.pdf}}} = \sum (s_1 s_2) (s_2 s_4) (s_4 s_3) (s_3 s_1) = 2^4,
+		\end{equation}
+		因此
+		\begin{equation}
+			\text{sum} = 2^N + N \underbrace{2^{N - 4} 2^4}_{= 2^N} \tanh^4 \beta J + \cdots,
+		\end{equation}
+		类似地, 6 阶和 8 阶修正分别为
+		\begin{equation}
+			\begin{dcases}
+				\vcenter{\hbox{\includegraphics[scale=1]{figures/graph of the 6th order terms (1).pdf}}} + \vcenter{\hbox{\includegraphics[scale=1]{figures/graph of the 6th order terms (2).pdf}}} = 2 N 2^N \tanh^6 \beta J \\
+				\begin{aligned}
+					& \vcenter{\hbox{\includegraphics[scale=1]{figures/graph of the 8th order terms (1).pdf}}} + \vcenter{\hbox{\includegraphics[scale=1]{figures/graph of the 8th order terms (2).pdf}}} + \vcenter{\hbox{\includegraphics[scale=1]{figures/graph of the 8th order terms (3).pdf}}} + \vcenter{\hbox{\includegraphics[scale=1]{figures/graph of the 8th order terms (4).pdf}}} \\
+					&= \Big( \frac{1}{2} N (N - 5) + N + 4 N + 2 N \Big) 2^N \tanh^8 \beta J
+				\end{aligned}
+			\end{dcases},
+		\end{equation}
+		因此
+		\begin{equation}
+			\text{sum} = 2^N \Big( 1 + N \tanh^4 \beta J + 2 N \tanh^6 \beta J + \frac{1}{2} N (N + 9) \tanh^8 \beta J + \cdots \Big).
+		\end{equation}
+	\end{tcolorbox}
+\end{itemize}
+
+\subsubsection{high temperature expansion in the Ising chain}
+\begin{itemize}
+	\item 在 1-dim. 情况下, 显然不存在类似 \eqref{11.4.26} 的闭环, 因此
+	\begin{align}
+		Z_\text{C} &= \cosh^N \beta J \Big( 2^N + \vcenter{\hbox{\includegraphics[scale=1]{figures/graph of the Nth order term in the Ising chain.pdf}}} \Big) \notag \\
+		&= 2^N \cosh^N \beta J (1 + \tanh^N \beta J) = (2 \cosh \beta J)^N + (2 \sinh \beta J)^N \simeq (2 \cosh \beta J)^N,
+	\end{align}
+	对比 \eqref{11.4.1}, 并注意到 $\lambda_+(B = 0) = 2 \cosh \beta J, \lambda_-(B = 0) = 2 \sinh \beta J$, 完全符合之前的计算.
+\end{itemize}
+
+\subsection{Kramers--Wannier duality}
 \begin{itemize}
 	\item 
 \end{itemize}
