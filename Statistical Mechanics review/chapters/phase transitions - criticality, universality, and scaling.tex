@@ -227,7 +227,7 @@
 	其中 $B_\text{eff}(m) = B + q J m$ 称为 mean field. 因此
 	\begin{align}
 		\ln Z_\text{C,mf} &\simeq \max(\ln \Omega(m) - \beta E_\text{mf}(m)) \notag \\
-		&= N \max \Big( \ln 2 - \frac{1 + m}{2} \ln(1 + m) - \frac{1 - m}{2} \ln(1 - m) + \beta \Big( B_\text{eff}(m) m - \frac{q}{2} J m^2 \Big) \Big),
+		&= N \Big( \ln(2 \cosh \beta B_\text{eff}(m_0)) - \beta \frac{q}{2} J m_0^2 \Big),
 	\end{align}
 	得到
 	\begin{equation}
@@ -237,7 +237,7 @@
 	
 	\begin{tcolorbox}[title=calculation:]
 		\begin{equation}
-			\frac{1}{N} \frac{\partial}{\partial m} \ln \Omega(m) - \beta E_\text{mf}(m) = \frac{1}{2} \ln \frac{1 - m}{1 + m} + \beta (B + q J m).
+			0 = \frac{1}{N} \frac{\partial}{\partial m} (\ln \Omega(m) - \beta E_\text{mf}(m)) = \frac{1}{2} \ln \frac{1 - m}{1 + m} + \beta (B + q J m).
 		\end{equation}
 	\end{tcolorbox}
 	
@@ -290,6 +290,8 @@
 	\begin{equation}
 		\chi \simeq \frac{1}{4 k_B} (T_c - T)^{- \gamma}, \gamma = 1.
 	\end{equation}
+	
+	\item mean field theory 得到的 critical exponents 和 van der Waals equation 的一样, 为 $\beta = \frac{1}{2}, \delta = 3, \gamma = 1$.
 \end{itemize}
 
 \section{some exact results for the Ising model}
@@ -387,7 +389,7 @@
 	\end{figure}
 	
 	\item 因此, 低温下近似有
-	\begin{equation}
+	\begin{equation} \label{11.4.10}
 		Z_\text{C} = 2 e^{- \beta E_0} \Big( 1 + N e^{- 8 \beta J} + 2 N e^{- 12 \beta J} + \frac{1}{2} N (N + 9) e^{- 16 \beta J} + \cdots \Big),
 	\end{equation}
 	其中 $E_0 = - 2 N J$, 并注意到 $\Omega(E_0) = 2$.
@@ -428,7 +430,7 @@
 		Z \sim \sum_L e^{(\alpha - 2 \beta J) L},
 	\end{equation}
 	估计相变发生在 $E \sim T_c S$, 因此
-	\begin{equation}
+	\begin{equation} \label{11.4.16}
 		k_B T_c \sim \frac{2 J}{\alpha}.
 	\end{equation}
 	
@@ -470,7 +472,7 @@
 	\end{equation}
 	
 	\item 对求和中的 $\tanh \beta J$ 作展开, 得到
-	\begin{equation}
+	\begin{equation} \label{11.4.23}
 		Z_\text{C} = 2^N \cosh^{2 N} \beta J \Big( 1 + N \tanh^4 \beta J + 2 N \tanh^6 \beta J + \frac{1}{2} N (N + 9) \tanh^8 \beta J + \cdots \Big).
 	\end{equation}
 	
@@ -520,6 +522,54 @@
 \end{itemize}
 
 \subsection{Kramers--Wannier duality}
+\begin{itemize}
+	\item 对比 \eqref{11.4.10} 和 \eqref{11.4.23}, 低温和高温极限下的 partition function 有对应关系, 只需要作代换
+	\begin{equation}
+		e^{- 2 \beta J} \leftrightarrow \tanh \beta J
+	\end{equation}
+	两式就完全一样了, 这种对称性称为 Kramers--Wannier duality.
+	
+	\item Kramers--Wannier duality 源于低温和高温极限下计算中的 graphs are dual, 如下图所示:
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=1]{figures/Kramers--Wannier duality.pdf}
+		\caption{Kramers--Wannier duality.}
+	\end{figure}
+	
+	\item 更准确地表述 duality 为
+	\begin{equation}
+		e^{- 2 \tilde{\beta} J} = \tanh \beta J \Longrightarrow \sinh 2 \tilde{\beta} J = \frac{1}{\sinh 2 \beta J},
+	\end{equation}
+	其中 $\tilde{\beta} J \gg 1, \beta J \ll 1$, 那么
+	\begin{equation}
+		Z_\text{C}(\beta) = \frac{2^N \cosh^{2 N} \beta J}{2 e^{- \tilde{\beta} E_0}} Z_\text{C}(\tilde{\beta}) = \frac{1}{2 \sinh^N 2 \tilde{\beta} J} Z_\text{C}(\tilde{\beta}).
+	\end{equation}
+	
+	\item 相变发生在 self-dual point $\tilde{\beta} = \beta$, 得到 critical temperature 为
+	\begin{equation}
+		k_B T_c = \frac{2 J}{\ln(\sqrt{2} + 1)} \approx 2.269 J,
+	\end{equation}
+	与 Peierls droplet 的估计 \eqref{11.4.16} 相符.
+\end{itemize}
+
+\section{Landau theory}
+\begin{itemize}
+	\item 注意 Landau approach to phase transition 只能给出定性结果.
+	
+	\item Landau theory 基于 free energy
+	\begin{equation}
+		F(T, B, N) = - \frac{1}{\beta} \ln Z_\text{C} = N \Big( \frac{q}{2} J m_0^2 - \frac{1}{\beta} \ln(2 \cosh \beta B_\text{eff}) \Big),
+	\end{equation}
+	但我们把 $F$ 视为 $m$ 的函数, 且 $m$ 不一定取平衡态的值 $m_0$, 并注意到
+	\begin{equation}
+		\frac{\partial F(m_0)}{\partial m} = 0.
+	\end{equation}
+	
+	\item 将 $m$ 称为 order parameter, 满足 $m = 0$ when $T > T_c$ 但 $m \neq 0$ when $T < T_c$.
+\end{itemize}
+
+\subsection{second order phase transition}
 \begin{itemize}
 	\item 
 \end{itemize}
