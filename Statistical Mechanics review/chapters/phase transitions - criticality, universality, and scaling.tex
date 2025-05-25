@@ -66,7 +66,7 @@
 			n(\vec{r}) \simeq \frac{N}{V} \Longrightarrow \sum_{i > j} u(\vec{q}_i - \vec{q}_j) \simeq \frac{V}{2 v^2} \int d^3 r \, u(\vec{r}),
 		\end{equation}
 		注意到
-		\begin{equation}
+		\begin{equation} \label{11.2.5}
 			u(\vec{r}) = u(r) = \begin{dcases}
 				\infty & r < \sigma \\
 				< 0 & r > \sigma
@@ -570,6 +570,159 @@
 \end{itemize}
 
 \subsection{second order phase transition}
+\begin{itemize}
+	\item free energy is invariant under the $\mathbb{Z}_2$ symmetry $m \mapsto - m$ (比如 $B = 0$ 时的 Ising model), 那么对 free energy 展开,
+	\begin{equation} \label{11.5.3}
+		F(T, m) = F_0(T) + a(T) m^2 + b(T) m^4 + \cdots,
+	\end{equation}
+	对于 $B = 0$ 的 Ising model 有
+	\begin{equation}
+		F_\text{Ising}(T, m) = - N k_B T \ln 2 + \frac{q N}{2} J (1 - \beta q J) m^2 + \frac{N \beta^3 q^4 J^4}{24} m^4 + \cdots
+	\end{equation}
+	
+	\item 假设 $b(T) > 0$ for all $T$ (否则需要考虑 $m^6$ 项, 得到 tri-critical points), 得到
+	\begin{equation}
+		m_0 = \begin{dcases}
+			0 & a(T) > 0 \\
+			\pm \sqrt{- \frac{a(T)}{2 b(T)}} & a(T) < 0
+		\end{dcases},
+	\end{equation}
+	critical temperature 为 $a(T_c) = 0$, 这是精确的结果.
+	
+	\item free energy 的示意图如下:
+	
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[scale=0.8]{figures/free energy when a(T) is greater than 0.pdf}
+			\caption{free energy when $a(T) > 0$.}
+		\end{subfigure}
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[scale=0.8]{figures/free energy when a(T) is less than 0.pdf}
+			\caption{free energy when $a(T) < 0$.}
+		\end{subfigure}
+		\caption{}
+	\end{figure}
+	
+	\item 将 equilibrium value of $m$ 代入 free energy, 得到
+	\begin{equation}
+		F(T) = \begin{dcases}
+			F_0(T) & T > T_c \\
+			F_0(T) - \frac{a^2(T)}{4 b(T)} & T < T_c
+		\end{dcases},
+	\end{equation}
+	可见 $F(T)$ 在 $T = T_c$ 处连续, 且
+	\begin{equation}
+		\begin{dcases}
+			S = - \frac{\partial F}{\partial T} = \begin{dcases}
+				F_0'(T) & T < T_c \\
+				F_0'(T) - \frac{2 a a' b - a^2 b'}{4 b^2} & T > T_c
+			\end{dcases} \\
+			\frac{C_V}{T} = \frac{\partial S}{\partial T} = \begin{dcases}
+				F_0''(T) & T < T_c \\
+				F_0''(T) - \frac{2 a a'' b^2 + 2 a'^2 b^2 - 4 a a' b b' + 2 a^2 b'^2 - a^2 b b''}{4 b^3} & T > T_c
+			\end{dcases}
+		\end{dcases},
+	\end{equation}
+	$S$ 连续但 $C_V$ 不连续, 因此是 second order phase transition.
+	
+	\item 如果假设 $T_c$ 附近
+	\begin{equation}
+		b = b_0, \quad a = a_0 (T - T_c),
+	\end{equation}
+	 那么
+	 \begin{equation}
+	 	m_0 = \pm \sqrt{- \frac{a_0}{2 b_0}} (T - T_c)^{1 / 2},
+	 \end{equation}
+	 得到 critical exponent $\beta = \frac{1}{2}$.
+\end{itemize}
+
+\subsection{spontaneous symmetry breaking}
+\begin{itemize}
+	\item 在 $T < T_c$ 时, 系统基态处于 $m = \pm m_0$, 此时 $\mathbb{Z}_2$ symmetry is spontaneously broken by the choice of ground state of the theory.
+	
+	\item 对于 BECs, superfluids, superconductors and Higgs mechanism, $m = |\psi|^2 \geq 0, \psi \in \mathbb{C}$, 系统 (free energy 依然具有 \eqref{11.5.3} 的形式) 具有 $\mathrm{U}(1)$ symmetry.
+\end{itemize}
+
+\subsection{first order phase transitions}
+\begin{itemize}
+	\item 考虑系统的 free energy 含有 odd power terms,
+	\begin{equation}
+		F(T, m) = F_0(T) + \alpha(T) m + a(T) m^2 + \gamma(T) m^3 + b(T) m^4 + \cdots,
+	\end{equation}
+	对于 Ising model 有
+	\begin{equation}
+		F_\text{Ising}(T, m) = - N k_B T \ln 2 + \frac{q N}{2} J m^2 - \frac{N}{2 k_B T} (B + q J m)^2 + \frac{N}{24 (k_B T)^3} (B + q J m)^4 + \cdots,
+	\end{equation}
+	此时系统不再具有 $\mathbb{Z}_2$ symmetry.
+	
+	\item 依然假设 $b(T) > 0$ for all $T$.
+	
+	\item 系统的 ground state 在 $m > 0$ 和 $m < 0$ 之间不连续地变化 (first order phase transition), 这可能由温度改变导致, 也可能是外部参数改变导致. 对于 Ising model, 相变源于 $B$ 的改变.
+\end{itemize}
+
+\subsection{Lee--Yang zeros}
+\begin{itemize}
+	\item 考虑类似 \eqref{11.2.5} 的相互作用, 有限空间中可以容纳的粒子数有限, 最大值为 $N_V \sim V / \sigma^3$.
+	
+	\item 系统的 grand partition function 为
+	\begin{equation}
+		Z_\text{GC}(T, V, z) = \sum_{N = 0}^{N_V} z^N Z(T, V, N),
+	\end{equation}
+	对于 $z$ 是一个 $N_V$ 阶 polynomial, 且系数为正, 因此 $Z_\text{GC}(z)$ 的 zero points 处于实轴负半轴或 complex pairs.
+	
+	\item 在极限 $V \rightarrow \infty$ 下, $Z_\text{GC}(z)$ 可能有实轴正半轴上的零点.
+	
+	\item Lee--Yang theorem states that: $Z_\text{GC}(z) \neq 0$ 的区域 (这个区域必须包含实轴正半轴) 里, $\Theta$ 是光滑的; 但如果 $z$ 的实轴正半轴上出现 $Z_\text{GC}(z)$ 零点, 那么 $\Theta$ 一般 not analytic. 其中
+	\begin{equation}
+		\Theta = \lim_{V \rightarrow \infty} \Big( \frac{1}{V} \ln Z_\text{GC}(T, V, z) \Big).
+	\end{equation}
+	
+	\item $\frac{\partial^n \Theta}{\partial z^n}$ 是最低阶不连续导数, system undergoes $n$\textsuperscript{th} order phase transition.
+\end{itemize}
+
+\subsubsection{a made-up example}
+\begin{itemize}
+	\item 考虑系统的 grand partition function 为
+	\begin{equation}
+		Z_\text{GC}(V, z) = (1 + z)^{[\alpha V]} (1 + z^{[\alpha V]}),
+	\end{equation}
+	其中 $[\alpha V]$ 表示 $\alpha V$ 的整数部分, $\alpha$ 是一个与温度有关的参数.
+	
+	\item $Z_\text{GC}(V, z)$ 的零点为
+	\begin{equation}
+		z = - 1, \quad \text{and} \quad z = e^{i (2 n + 1) \pi / [\alpha V]}, n = 0, 1, \cdots, [\alpha V] - 1.
+	\end{equation}
+	
+	\item 考虑 $V \rightarrow \infty$, 此时 $z = 1$ 是一个零点, 且
+	\begin{align}
+		\Theta &= \lim_{V \rightarrow \infty} \Big( \frac{1}{V} ([\alpha V] \ln(1 + z) + \ln(1 + z^{[\alpha V]})) \Big) \notag \\
+		&= \begin{dcases}
+			\alpha \ln(1 + z) & |z| \leq 1 \\
+			\alpha (\ln(1 + z) + \ln z) & |z| > 1
+		\end{dcases},
+	\end{align}
+	可见 $\Theta$ 对所有 $z$ 连续, 但只在 $|z| \neq 0$ 时 analytic.
+	
+	\item 得到
+	\begin{equation}
+		\begin{dcases}
+			n = z \frac{\partial \Theta}{\partial z} = \begin{dcases}
+				\frac{z \alpha}{1 + z} \in [0, {\textstyle \frac{\alpha}{2}}] & z \leq 1 \\
+				\frac{\alpha (1 + 2 z)}{1 + z} \in ({\textstyle \frac{3 \alpha}{2}}, 2 \alpha) & z > 1
+			\end{dcases} \\
+			P = \begin{dcases}
+				\alpha k_B T \ln \frac{\alpha}{\alpha - n} & z \leq 1 \\
+				\alpha k_B T \ln \frac{2 \alpha n}{(2 \alpha - n)^2} & z > 1
+			\end{dcases}
+		\end{dcases},
+	\end{equation}
+	可见系统存在的 particle density jump, 类似气液相变.
+\end{itemize}
+
+\subsection{Landau--Ginzburg theory}
 \begin{itemize}
 	\item 
 \end{itemize}
