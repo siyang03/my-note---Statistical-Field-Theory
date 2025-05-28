@@ -1,0 +1,104 @@
+\chapter{elements of ensemble theory} \label{2}
+\begin{itemize}
+	\item 本章从经典力学角度讨论 ensemble theory.
+\end{itemize}
+
+\section{phase space of a classical system and Liouville's theorem}
+\begin{itemize}
+	\item classical system 的 microstates 用 phase space 中的一个点 $(p_i, q_i)$ 描述.
+	
+	\item the canonical equation of motion is
+	\begin{equation}
+		\begin{dcases}
+			\dot{p}_i = - \frac{\partial H}{\partial q_i} \\
+			\dot{q}_i = \frac{\partial H}{\partial p_i}
+		\end{dcases}.
+	\end{equation}
+	
+	\item an ensemble of systems 就是一个系统在某个 macrostate (和其它条件) 下, 其 microstate 的概率分布, 用 $\rho(p, q, t)$ 描述.
+	
+	\item 如果
+	\begin{equation} \label{2.1.2}
+		\frac{\partial \rho}{\partial t} = 0,
+	\end{equation}
+	则称 the ensemble is stationary or equilibrium.
+	\begin{itemize}
+		\item 一类热平衡系综为 $\rho(p, q) = \rho(H(p, q))$.
+	\end{itemize}
+	
+	\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+	
+	\item Liouville's theorem: $p_i(t), q_i(t) : s \mapsto \mathbb{R}$ 是 phase space 中的标量场 (state, $s$, 是 phase space 中的点), 体元 $\epsilon = dp_1 \wedge \cdots \wedge dp_\nu \wedge dq_1 \wedge \cdots \wedge dq_\nu$ 不随时间变化,
+	\begin{equation}
+		\frac{d\epsilon}{dt} = 0.
+	\end{equation}
+	
+	\begin{tcolorbox}[title=proof:]
+		注意到
+		\begin{equation}
+			\begin{pmatrix}
+				dp_1(t + dt) \\
+				\vdots \\
+				dp_\nu(t + dt) \\
+				dq_1(t + dt) \\
+				\vdots \\
+				dq_\nu(t + dt)
+			\end{pmatrix} = \begin{pmatrix}
+				\delta_{i j} - \frac{\partial^2 H}{\partial q_i \partial p_j} dt & - \frac{\partial^2 H}{\partial q_i \partial q_j} dt \\
+				\frac{\partial^2 H}{\partial p_i \partial p_j} dt & \delta_{i j} + \frac{\partial^2 H}{\partial p_i \partial q_j} dt
+			\end{pmatrix} \begin{pmatrix}
+				dp_1(t) \\
+				\vdots \\
+				dp_\nu(t) \\
+				dq_1(t) \\
+				\vdots \\
+				dq_\nu(t)
+			\end{pmatrix},
+		\end{equation}
+		因此
+		\begin{align}
+			\epsilon(t + dt) &= \begin{vmatrix}
+				\delta_{i j} - \frac{\partial^2 H}{\partial q_i \partial p_j} dt & - \frac{\partial^2 H}{\partial q_i \partial q_j} dt \\
+				\frac{\partial^2 H}{\partial p_i \partial p_j} dt & \delta_{i j} + \frac{\partial^2 H}{\partial p_i \partial q_j} dt
+			\end{vmatrix} \epsilon(t) \notag \\
+			&= \bigg( 1 + \sum_{i = 1}^\nu \underbrace{\Big( - \frac{\partial^2 H}{\partial q_i \partial p_i} + \frac{\partial^2 H}{\partial p_i \partial q_i} \Big) dt}_{= 0} + O(dt^2) \bigg) \epsilon(t).
+		\end{align}
+	\end{tcolorbox}
+	
+	\item Liouville's equation:
+	\begin{equation}
+		\frac{\partial \rho}{\partial t} = \{H, \rho\}_\text{BP} \equiv \sum_{i = 1}^\nu \Big( \frac{\partial H}{\partial q_i} \frac{\partial \rho}{\partial p_i} - \frac{\partial \rho}{\partial q_i} \frac{\partial H}{\partial p_i} \Big).
+	\end{equation}
+	
+	\begin{tcolorbox}[title=proof:]
+		注意到
+		\begin{equation}
+			\frac{d(\rho(p, q, t) \epsilon(t))}{dt} = 0,
+		\end{equation}
+		结合 Liouville's theorem, 可知
+		\begin{equation}
+			\frac{d\rho(p, q, t)}{dt} = 0 \Longrightarrow \cdots
+		\end{equation}
+	\end{tcolorbox}
+\end{itemize}
+
+\section{the microcanonical ensemble}
+\begin{itemize}
+	\item the microcanonical ensemble 的概率密度为
+	\begin{equation}
+		\rho(H(p, q)) = \begin{dcases}
+			\frac{1}{\Gamma} & E - \Delta E \leq H(p, q) \leq E \\
+			0 & \text{otherwise}
+		\end{dcases},
+	\end{equation}
+	其中
+	\begin{equation}
+		\Gamma = \frac{\omega}{\omega_0},
+	\end{equation}
+	其中 $\omega$ 是 $E - \Delta E \leq H(p, q) \leq E$ 所占相空间的体积, $\omega_0$ 是一个状态所占相空间的体积.
+	\begin{itemize}
+		\item 在 section \ref{1.2} 中, $\omega_0 = h^{3 N}$.
+		
+		\item 实验发现, 一般地, $\omega_0 = h^\nu$, 其中 $\nu$ 是 degree of freedom, 这在经典和极端相对论 (光子气) 情况下都成立.
+	\end{itemize}
+\end{itemize}
