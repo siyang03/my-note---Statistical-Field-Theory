@@ -763,9 +763,9 @@
 	\end{equation}
 	这个 PDE 的 Green's function 为
 	\begin{equation}
-		G(\vec{x}) \sim \frac{e^{- r / \xi}}{r^{(D - 1) / 2}}, \quad r \gg \xi, \quad \xi = \sqrt{- \frac{c}{2 a}},
+		G(\vec{x}) \simeq - \frac{1}{2 (2 \pi)^{(D - 1) / 2} \xi^{(D - 3) / 2}} \frac{e^{- r / \xi}}{r^{(D - 1) / 2}}, \quad r / \xi \gg D, \quad \xi = \sqrt{- \frac{c}{2 a}},
 	\end{equation}
-	其中 $\xi$ 称为 correlation length.
+	其中 $\xi$ 称为 correlation length, 并注意到 critical point 附近 $a \rightarrow 0, \xi \rightarrow \infty$.
 	
 	\begin{tcolorbox}[title=calculation:]
 		作 Fourier transformation 有
@@ -775,9 +775,33 @@
 		且
 		\begin{align}
 			G(\vec{x}) &= \int \frac{d^D k}{(2 \pi)^D} \frac{e^{i \vec{k} \cdot \vec{x}}}{- |\vec{k}|^2 + \frac{2 a}{c}} \notag \\
-			&= \frac{1}{(2 \pi)^D} \int d\Omega_{D - 2} \int_0^\pi \sin \theta d\theta \int_0^\infty k^{D - 1} dk \, \frac{e^{i k r \cos \theta}}{- k^2 + \frac{a}{2 c}} \notag \\
-			&= \frac{1}{(2 \pi)^D} \frac{2 \pi^{(D - 1) / 2}}{\Gamma(\frac{D - 1}{2})} \frac{2}{r} \int_0^\infty dk \, \frac{k^{D - 2} \sin k r}{- k^2 + \frac{a}{2 c}} \sim \frac{e^{- r / \xi}}{r^{(D - 1) / 2}}, \quad r \gg \xi.
+			&= \frac{1}{(2 \pi)^D} \int d\Omega_{D - 2} \int_0^\pi \sin \theta d\theta \int_0^\infty k^{D - 1} dk \, \frac{e^{i k r \cos \theta}}{- k^2 + \frac{2 a}{c}} \notag \\
+			&= \frac{1}{(2 \pi)^D} \frac{2 \pi^{(D - 1) / 2}}{\Gamma(\frac{D - 1}{2})} \frac{2}{r} \int_0^\infty dk \, \frac{k^{D - 2} \sin k r}{- k^2 + \frac{2 a}{c}} = \cdots
 		\end{align}
+		
+		\noindent\rule[0.5ex]{\linewidth}{0.5pt} % horizontal line
+		
+		另一种方法是引入对 $\alpha$ 的积分 (其中 $\mu = \sqrt{- \frac{2 a}{c}}$),
+		\begin{equation}
+			\frac{1}{|\vec{k}|^2 + \mu^2} = \int_0^\infty d\alpha \, e^{- \alpha (|\vec{k}|^2 + \mu^2)},
+		\end{equation}
+		代入, 得到
+		\begin{align}
+			G(\vec{x}) &= \int \frac{d^D k}{(2 \pi)^D} \frac{e^{i \vec{k} \cdot \vec{x}}}{- |\vec{k}|^2 + \frac{2 a}{c}} = - \int_0^\infty d\alpha \, e^{- \alpha \mu^2} \int \frac{d^D k}{(2 \pi)^D} e^{- \alpha |\vec{k}|^2 + i \vec{k} \cdot \vec{x}} \notag \\
+			&= - \int_0^\infty d\alpha \, \frac{e^{- \alpha \mu^2 - \frac{r^2}{4 \alpha}}}{(4 \pi \alpha)^{D / 2}} = - \frac{1}{(2 \pi)^{D / 2}} \Big( \frac{\mu}{r} \Big)^{\frac{D - 2}{2}} K_{\frac{D - 2}{2}}(\mu r),
+		\end{align}
+		其中 $K$ 是 \href{https://en.wikipedia.org/wiki/Bessel_function#Modified_Bessel_functions:_I%CE%B1,_K%CE%B1}{modified Bessel functions of the second kind}. 在 $\mu r \gg D$ 的情况下, 将积分写作
+		\begin{equation}
+			G(\vec{x}) = - \frac{1}{(4 \pi)^{D / 2}} \int_0^\infty d\alpha \, e^{f(\alpha)}, \quad f(\alpha) = - \alpha \mu^2 - \frac{r^2}{4 \alpha} - \frac{D}{2} \ln \alpha,
+		\end{equation} 
+		$f(\alpha)$ 的最小值位于 $\alpha_0 = \frac{- D + \sqrt{D^2 + 4 \mu^2 r^2}}{4 \mu^2} \simeq \frac{r}{2 \mu}$, 此时
+		\begin{equation}
+			f(\alpha_0) \simeq - \mu r - \frac{D}{2} \ln \frac{r}{2 \mu}, \quad f''(\alpha_0) \simeq - \frac{4 \mu^3}{r} + O(r^{- 2}),
+		\end{equation}
+		因此
+		\begin{equation}
+			G(\vec{x}) \simeq - \frac{1}{(4 \pi)^{D / 2}} \Big( \frac{2 \mu}{r} \Big)^{\frac{D}{2}} e^{- \mu r} \sqrt{\frac{\pi r}{2 \mu^3}} = - \frac{\mu^{(D - 3) / 2}}{2 (2 \pi)^{(D - 1) / 2}} \frac{e^{- \mu r}}{r^{(D - 1) / 2}}.
+		\end{equation}
 	\end{tcolorbox}
 \end{itemize}
 
